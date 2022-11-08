@@ -11,13 +11,15 @@
 # ....
 
 
+
 library(Robyn)
 packageVersion("Robyn")
 Sys.setenv(R_FUTURE_FORK_ENABLE = "true")
 options(future.fork.enable = TRUE)
 getwd()
-setwd("C:/Users/YEEUN/DESKTOP/")
-robyn_object <- "C:/Users/YEEUN/DESKTOP/MyRobyn.RDS"
+robyn_object <- "../MyRobyn.RDS"
+
+library(RobynSuggestion)
 
 ################################################################
 #### Step 1: Load data
@@ -73,7 +75,6 @@ plot_saturation(plot = FALSE)
 ### actual usage pattern of multiple hyper-param sets of media for experiments
 
 ### Example hyperparameters ranges for Geometric adstock
-source("validate.R")
 hyperparameters <- list(
   facebook_S_alphas = c(0.5, 3),
   facebook_S_gammas = c(0.3, 1),
@@ -294,6 +295,9 @@ realized_value
 predict_media_response
 predict_media_dependent
 validation_test(InputCollect, OutputCollect, dt_simulated_weekly, post_period, select_model)
+
+
+######### Non-zero #########
 
 
 #### Step 5': Non-zero...
