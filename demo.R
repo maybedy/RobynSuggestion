@@ -95,7 +95,31 @@ hyperparameters <- list(
   newsletter_gammas = c(0.3, 1),
   newsletter_thetas = c(0.1, 0.4)
 )
+input_vars <- list()
+input_vars$type1 <- c("tv_S", "ooh_S", "facebook_S")
+input_vars$type2 <- c("print_S", "search_S")
+input_vars$type3 <- c("newsletter")
+input_hyper <- list()
+input_hyper$type1 <- list(
+  alphas = c(0.5, 3),
+  gammas = c(0.3, 1),
+  shapes = c(0.0001, 5),
+  scales = c(0, 0.1)
+)
+input_hyper$type2 <- list(
+  alphas = c(0.5, 1),
+  gammas = c(0.3, 1),
+  shapes = c(0.0001, 10),
+  scales = c(0, 0.1)
+)
+input_hyper$type3 <- list(
+  alphas = c(0.5, 1),
+  gammas = c(0.3, 1),
+  shapes = c(0.0001, 1),
+  scales = c(0, 0.5)
+)
 hyperparameters <- put_hyppar(InputCollect, input_vars, input_hyper)
+
 InputCollect <- robyn_inputs(InputCollect = InputCollect, hyperparameters = hyperparameters)
 print(InputCollect)
 
