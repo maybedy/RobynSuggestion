@@ -113,13 +113,6 @@ result_media_new <- function(InputCollect,
   ))
 }
 
-result_media_new(InputCollect, OutputCollect,
-  "tv_S",
-  select_model,
-  type = "mean"
-)
-
-
 
 # form of the post_data is equal to the form of the InputCollect$dt_input
 # just it has different date range
@@ -186,29 +179,6 @@ result_media_post_new <- function(InputCollect,
   ))
 }
 
-result_media_new(InputCollect, OutputCollect,
-  "print_S",
-  select_model,
-  type = "mean"
-)
-result_media_post_new(InputCollect, OutputCollect,
-  dt_simulated_weekly,
-  c(InputCollect$window_start, InputCollect$window_end),
-  "print_S",
-  select_model,
-  type = "mean"
-)
-
-result_media_post(InputCollect, OutputCollect,
-  dt_simulated_weekly,
-  post_period,
-  "tv_S",
-  select_model,
-  type = "mean"
-)
-
-###########################################
-###########################################
 ###########################################
 ###########################################
 # start
@@ -226,7 +196,7 @@ result_total_new <- function(InputCollect,
   }
   return(list("response" = response, "dependent" = dependent))
 }
-result_total_new(InputCollect, OutputCollect, select_model)
+
 
 result_total_post_new <- function(InputCollect,
                                   OutputCollect,
@@ -243,7 +213,6 @@ result_total_post_new <- function(InputCollect,
   }
   return(list("response" = response, "dependent" = dependent))
 }
-result_total_post_new(InputCollect, OutputCollect, dt_simulated_weekly, post_period, select_model)
 
 # end
 ###########################################

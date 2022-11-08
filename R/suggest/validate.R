@@ -476,8 +476,6 @@ result_total_post <- function(InputCollect,
 
   list("response" = response, "dependent" = dependent)
 }
-result_total_post(InputCollect, OutputCollect, dt_simulated_weekly, post_period, select_model)
-
 
 ####################################################################
 #' [Suggestion-10] Validate the results by history and prediction

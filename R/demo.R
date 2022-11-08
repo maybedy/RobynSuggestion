@@ -282,6 +282,7 @@ result_media_post(InputCollect,
 decomp_dependent(InputCollect)
 InputCollect$paid_media_spends
 result_total(InputCollect, OutputCollect, select_model)
+result_total_post(InputCollect, OutputCollect, dt_simulated_weekly, post_period, select_model)
 
 
 ############################
@@ -305,3 +306,35 @@ compare_nonzero(
 Allocator_results_new(AllocatorCollect_opt, AllocatorCollect_hist, AllocatorCollect_recent)
 
 #### Step 6':
+
+
+result_media_new(InputCollect, OutputCollect,
+  "tv_S",
+  select_model,
+  type = "mean"
+)
+
+result_media_new(InputCollect, OutputCollect,
+  "print_S",
+  select_model,
+  type = "mean"
+)
+result_media_post_new(InputCollect, OutputCollect,
+  dt_simulated_weekly,
+  c(InputCollect$window_start, InputCollect$window_end),
+  "print_S",
+  select_model,
+  type = "mean"
+)
+
+result_media_post(InputCollect, OutputCollect,
+  dt_simulated_weekly,
+  post_period,
+  "tv_S",
+  select_model,
+  type = "mean"
+)
+
+result_total_new(InputCollect, OutputCollect, select_model)
+
+result_total_post_new(InputCollect, OutputCollect, dt_simulated_weekly, post_period, select_model)
