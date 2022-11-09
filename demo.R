@@ -437,7 +437,7 @@ predict_response_sum_on_test_zero_spend(
 )
 
 print("[Progress] Step 10': Validation")
-post_data <- data(dt_simulated_weekly)
+post_data <- dt_simulated_weekly
 validate_predicts_zero_spend(
   InputCollect,
   OutputCollect,
