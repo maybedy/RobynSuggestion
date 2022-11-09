@@ -339,7 +339,6 @@ predict_response_sum_on_test(
 #### Step 10: Validate the reuslts by history and prediction
 # Suggest 1 function:
 # 1) validation_test
-
 print("=====================================================")
 print("[Progress] Step 10: Validate the results by history and prediction")
 validation_test(
@@ -350,14 +349,11 @@ validation_test(
   select_model
 )
 
-
 ######### Non-zero #########
-
-
-#### Step 5': Non-zero...
 print("=====================================================")
 print("             Steps for non-zero")
 print("=====================================================")
+#### Step 5': Non-zero...
 print("[Progress] Step 5': ")
 compare_nonzero(
   InputCollect,
@@ -371,9 +367,7 @@ Allocator_results_new(
   AllocatorCollect_recent
 )
 
-#### Step 6':
-
-
+#### Steps
 get_individual_result_new(
   InputCollect,
   OutputCollect,
