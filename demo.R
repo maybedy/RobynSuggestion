@@ -11,6 +11,10 @@
 # ....
 
 library(Robyn)
+
+
+# install.packages("remotes")
+# remotes::install_github("maybedy/RobynSuggestion")
 library(RobynSuggestion)
 
 Sys.setenv(R_FUTURE_FORK_ENABLE = "true")
