@@ -13,13 +13,14 @@
 
 
 library(Robyn)
-packageVersion("Robyn")
+library(RobynSuggestion)
+
 Sys.setenv(R_FUTURE_FORK_ENABLE = "true")
 options(future.fork.enable = TRUE)
 getwd()
 robyn_object <- "../MyRobyn.RDS"
 
-library(RobynSuggestion)
+
 
 ################################################################
 #### Step 1: Load data
@@ -119,6 +120,8 @@ input_hyper$type3 <- list(
   scales = c(0, 0.5)
 )
 hyperparameters <- put_hyppar(InputCollect, input_vars, input_hyper)
+
+InputCollect <- robyn_inputs(InputCollect = InputCollect, hyperparameters = hyperparameters)
 print(InputCollect)
 
 
@@ -146,7 +149,7 @@ OutputModels <- robyn_run(
   # cores = NULL, # default to max available
   # add_penalty_factor = FALSE, # Untested feature. Use with caution.
   # 2000 recommended for the dummy dataset with no calibration
-  iterations = 2000,
+  iterations = 2000, # 2000,
   # 5 recommended for the dummy dataset
   trials = 1,
   # outputs = FALSE disables direct model output - robyn_outputs()
@@ -198,6 +201,8 @@ print(ExportedModel)
 #### Step 5: Get channel boundary
 # Suggest 1 function:
 # 1) budget_boundary
+print("=====================================================")
+print("[Progress] Step 5: Get Channel Boundary")
 InputCollect$paid_media_spends
 budget_low <- c(200000, 200000, 60000, 100000, 30000)
 budget_high <- c(400000, 400000, 100000, 200000, 100000)
@@ -209,6 +214,8 @@ budget_bd <- budget_boundary(InputCollect, budget_low, budget_high, exp_spends)
 #### Step 6: Get analytical result of allocator
 # Suggest 1 function:
 # 1) Allocator_results
+print("=====================================================")
+print("[Progress] Step 6: Get Analytical result of allocator")
 AllocatorCollect_opt <- robyn_allocator(
   InputCollect = InputCollect,
   OutputCollect = OutputCollect,
@@ -252,6 +259,9 @@ Allocator_results(AllocatorCollect_opt, AllocatorCollect_hist, AllocatorCollect_
 #### Step 7: Decompose each KPI of media, non-media, and whole
 # Suggest 1 function:
 # 1) decomp_dependent
+
+print("=====================================================")
+print("[Progress] Step 7: Decompose each KPI of media, non-media, and whole")
 decomp_dependent(InputCollect)
 
 ## If you want to get result from pre period,
@@ -261,10 +271,13 @@ decomp_dependent(InputCollect, pre_period = pre_period)
 
 #########################
 #### Step 8: Get Performance of Each Media
-# Suggest 2 functions:
+# Suggest 3 functions:
 # 1) result_media
 # 2) saturation_hill_new
 # 3) result_media_post
+
+print("=====================================================")
+print("[Progress] Step 8: Get Performance of each media")
 post_period <- c(as.Date("2018-08-27"), as.Date("2019-08-19"))
 result_media(InputCollect, OutputCollect,
   "print_S",
@@ -302,6 +315,9 @@ result_media_post(InputCollect,
 # Suggest 2 function:
 # 1) result_total
 # 2) result_total_post
+
+print("=====================================================")
+print("[Progress] Step 9: Get Total Performance from whole media")
 decomp_dependent(InputCollect)
 InputCollect$paid_media_spends
 result_total(InputCollect, OutputCollect, select_model)
@@ -313,6 +329,9 @@ result_total_post(InputCollect, OutputCollect, dt_simulated_weekly, post_period,
 #### Step 10: Validate the reuslts by history and prediction
 # Suggest 1 function:
 # 1) validation_test
+
+print("=====================================================")
+print("[Progress] Step 10: Validate the results by history and prediction")
 realized_value
 predict_media_response
 predict_media_dependent
@@ -323,6 +342,10 @@ validation_test(InputCollect, OutputCollect, dt_simulated_weekly, post_period, s
 
 
 #### Step 5': Non-zero...
+print("=====================================================")
+print("             Steps for non-zero")
+print("=====================================================")
+print("[Progress] Step 5': ")
 compare_nonzero(
   InputCollect,
   AllocatorCollect_hist,

@@ -5,6 +5,37 @@ Authors@R:
     person("Doyun", "Kim", , "dykim.ses@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
 Description: What the package does (one paragraph).
+Depends:
+    R (>= 4.0.0)
+Imports:
+    doParallel,
+    doRNG,
+    dplyr,
+    foreach,
+    ggplot2,
+    ggridges,
+    glmnet,
+    jsonlite,
+    lares,
+    lubridate,
+    minpack.lm,
+    nloptr,
+    patchwork,
+    prophet,
+    reticulate,
+    rPref,
+    stringr,
+    tidyr,
+    Robyn
+Suggests:
+    shiny
+Config/reticulate:
+  list(
+    packages = list(
+      list(package = "nevergrad", pip = TRUE)
+    )
+  )
+URL: https://github.com/maybedy/RobynSuggestion
 License: use_mit_license()
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
