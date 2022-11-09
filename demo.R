@@ -1,16 +1,15 @@
-########### !!! Important !!! ###################
-#### This is description of our suggestion ####
+########### !!! Important !!! ################################
+#### This is description of demo including our suggestion ####
 # 1. Step 1-4: every section is similar to original version
 # except loading hyperparameter.
 # This is not a main part, but our additional suggestion
 # based on our practical usage of Robyn.
-# 2. Step 5-10: ***Suggestion***
-# You can check our suggestion
-# Goal (or Main purpose) for all suggestion is ...
-# each step is running our suggested function
+# 2. Step 5-10: *** Key Suggestion #1, 2, 3***
+# You can check our key suggestion
 # 3. Step 5'-10': ***Another Suggestion***
-# you can check non-zero version
-# ....
+# You can check revised version for considering zero spending weeks
+# 0. You can check details of our suggestion in each definition of function
+
 
 ################################################################
 #### Step 0: Preparation
@@ -124,6 +123,8 @@ input_hyper$type3 <- list(
   shapes = c(0.0001, 1),
   scales = c(0, 0.5)
 )
+#### (Add #1) Setting Hyperparameter Ranges By Channels
+print("(Add #1) Setting Hyperparameter Ranges By Channels")
 hyperparameters <- put_hyper_params(InputCollect, input_vars, input_hyper)
 
 InputCollect <- robyn_inputs(InputCollect = InputCollect, hyperparameters = hyperparameters)
@@ -203,11 +204,11 @@ print(ExportedModel)
 #################################
 
 ############################################
-#### Step 5: Get channel boundary
+#### (Add #2) Setting Budget Constraints By Spending in Dollars
+#### Step 5: Generate budge boundaries of each media channel.
 # Suggest 1 function:
 # 1) generate_budget_boundaries
-print("=====================================================")
-print("[Progress] Step 5: Get Channel Boundary")
+print("[Progress] Step 5: Get Budget Boundaries of each channel.")
 InputCollect$paid_media_spends
 budget_low <- c(200000, 200000, 60000, 100000, 30000)
 budget_high <- c(400000, 400000, 100000, 200000, 100000)
@@ -221,11 +222,12 @@ budget_bd <- generate_budget_boundaries(
 
 
 ###########################################
-#### Step 6: Get analytical result of allocator
+#### (Issue #1) Budget Allocator Optimum Results with Benchmarks
+#### Step 6: Get some critical benchmarks to evaluate the efficiency of the suggested optimal allocation.
 # Suggest 1 function:
 # 1) get_allocator_benchmarks
-print("=====================================================")
-print("[Progress] Step 6: Get Analytical result of allocator")
+print("(Issue #1) Budget Allocator Optimum Results with Benchmarks")
+print("[Progress] Step 6: Get benchmarks of allocation.")
 AllocatorCollect_opt <- robyn_allocator(
   InputCollect = InputCollect,
   OutputCollect = OutputCollect,
@@ -261,17 +263,21 @@ AllocatorCollect_recent <- robyn_allocator(
   expected_spend_days = 14, # Duration of expected_spend in days
   export = TRUE
 )
-# (From validate.R)
-get_allocator_benchmarks(AllocatorCollect_opt, AllocatorCollect_hist, AllocatorCollect_recent)
+# (From allocator.R)
+get_allocator_benchmarks(
+  AllocatorCollect_opt,
+  AllocatorCollect_hist,
+  AllocatorCollect_recent
+)
 
 
 #########################
-#### Step 7: Decompose each KPI of media, non-media, and whole
+#### (Key Suggestion #1) Response-Driven Approaches
+#### Step 7: Decompose dependent variable of each media and rest.
 # Suggest 1 function:
 # 1) decompose_dependent_vars
-
-print("=====================================================")
-print("[Progress] Step 7: Decompose each KPI of media, non-media, and whole")
+print("(!!! Key Suggestion #1, 2) Response-, Dependent-Driven Approaches")
+print("[Progress] Step 7: Decompose dependent variable of each media and rest.")
 decompose_dependent_vars(InputCollect)
 
 ## If you want to get result from pre period,
@@ -280,14 +286,13 @@ decompose_dependent_vars(InputCollect, pre_period = pre_period)
 
 
 #########################
-#### Step 8: Get Performance of Each Media
+#### (Key Suggestion #1, 2) Response-, Dependent-Driven Approaches
+#### Step 8: Get the response of each media
 # Suggest 3 functions:
 # 1) get_individual_result
 # 2) saturation_hill_revised
 # 3) predict_individual_result
-
-print("=====================================================")
-print("[Progress] Step 8: Get Performance of each media")
+print("[Progress] Step 8: Get the response of each media")
 post_period <- c(as.Date("2018-08-27"), as.Date("2019-08-19"))
 get_individual_result(
   InputCollect,
@@ -325,13 +330,12 @@ predict_individual_result(
 )
 
 #########################
-#### Step 9: Get Total Performance from whole media
+#### (Key Suggestion #1, 2) Response-, Dependent-Driven Approaches
+#### Step 9: Get sum of the response from media channels
 # Suggest 2 function:
 # 1) get_response_sum_on_trainining
 # 2) predict_response_sum_on_test
-
-print("=====================================================")
-print("[Progress] Step 9: Get Total Performance from whole media")
+print("[Progress] Step 9: Get sum of the response from media channels")
 decompose_dependent_vars(InputCollect)
 InputCollect$paid_media_spends
 get_response_sum_on_trainining(InputCollect, OutputCollect, select_model)
@@ -345,12 +349,12 @@ predict_response_sum_on_test(
 
 
 ############################
-#### Key Suggestion ########
-#### Step 10: Validate the reuslts by history and prediction
+#### (Key Suggestion #3) Validation: Response- vs. Dependent-Driven Approaches
+#### Step 10: Validation
 # Suggest 1 function:
 # 1) validate_predicts
-print("=====================================================")
-print("[Progress] Step 10: Validate the results by history and prediction")
+print("(!!! Key Suggestion #3) Validation: Response- vs. Dependent-Driven Approaches")
+print("[Progress] Step 10: Validation")
 validate_predicts(
   InputCollect,
   OutputCollect,
@@ -359,18 +363,20 @@ validate_predicts(
   select_model
 )
 
-######### Non-zero #########
+
+############################
+#### (Issue #2) Budget Allocator Optimum Results Considering Weeks with Zero Spending
+#### Steps for
 print("=====================================================")
-print("             Steps for non-zero")
-print("=====================================================")
-#### Step 5': Non-zero...
-print("[Progress] Step 5': ")
+print("(!!! Issue #2) Budget Allocator Optimum Results Considering Weeks with Zero Spending")
+print("[Progress] Step 5': Considers zero spending weeks for measuring the spend increase and response increase.")
 compare_zero_spend(
   InputCollect,
   AllocatorCollect_hist,
   c(InputCollect$window_start, InputCollect$window_end)
 )
 
+print("[Progress] Step 6': Get benchmarks of allocation.")
 get_allocator_benchmarks_zero_spend(
   InputCollect,
   AllocatorCollect_opt,
@@ -378,7 +384,10 @@ get_allocator_benchmarks_zero_spend(
   AllocatorCollect_recent
 )
 
+print("[Progress] Step 7': No needs. - Decompose dependent variable of each media and rest.")
+
 #### Steps
+print("[Progress] Step 8': Get the response of each media")
 get_individual_result_zero_spend(
   InputCollect,
   OutputCollect,
@@ -414,6 +423,7 @@ predict_individual_result(
   type = "mean"
 )
 
+print("[Progress] Step 9': Get sum of the response from media channels")
 get_response_sum_on_train_zero_spend(
   InputCollect,
   OutputCollect,
@@ -427,6 +437,7 @@ predict_response_sum_on_test_zero_spend(
   select_model
 )
 
+print("[Progress] Step 10': Validation")
 post_data <- data("dt_simulated_weekly")
 validate_predicts_zero_spend(
   InputCollect,
