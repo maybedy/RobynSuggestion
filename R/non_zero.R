@@ -220,7 +220,6 @@ result_total_post_new <- function(InputCollect,
 
 ###########################################
 ###########################################
-# start
 # compare history and prediction
 # need to modify the output form
 validation_test_new <- function(InputCollect, OutputCollect, post_data, post_period, select_model) {
@@ -244,3 +243,9 @@ validation_test_new <- function(InputCollect, OutputCollect, post_data, post_per
   temp[2, ] <- c("dependent", round(predict_media_dependent, 0), round(total_dependent, 0), round(100 * (predict_media_dependent / total_dependent - 1), 2))
   return(temp)
 }
+validation_test_new(InputCollect, OutputCollect, post_data, post_period, select_model)
+
+# end
+###########################################
+###########################################
+

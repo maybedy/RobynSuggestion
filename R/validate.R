@@ -84,6 +84,8 @@ budget_boundary <- function(InputCollect,
   window_end <- InputCollect$window_end
   paid_media_spends <- InputCollect$paid_media_spends
   intervalType <- InputCollect$intervalType
+  # ds <- dt_mod$ds
+
 
   boundary <- list()
   initial_nonzero_cost <- dt_mod %>%
@@ -180,13 +182,13 @@ decomp_dependent <- function(InputCollect,
     select(dep_var)) / nrow(data_cut)
   total_non_media <- total_whole - total_media
   media_share <- total_media / total_whole
-  KPI <- list(
+
+  return(list(
     "media" = total_media,
     "non_media" = total_non_media,
     "whole" = total_whole,
     "media_share" = media_share
-  )
-  KPI
+  ))
 }
 
 
@@ -221,6 +223,14 @@ saturation_hill_new <- function(x,
   }
 
   x_scurve
+}
+
+.normalize <- function(x) {
+  if (diff(range(x)) == 0) {
+    return(c(1, rep(0, length(x) - 1)))
+  } else {
+    return((x - min(x)) / (max(x) - min(x)))
+  }
 }
 
 ####################################################################
@@ -415,7 +425,7 @@ result_media_post <- function(InputCollect,
     dt_coef$rn == media_metric, ][["coef"]]
   response_var <- as.numeric(saturation_response * coeff)
   dependent_var <- as.numeric(saturation_dependent * coeff)
-  return (list(
+  return(list(
     "response" = response_var,
     "dependent" = sum(dependent_var, na.rm = TRUE) / length(dependent_var)
   ))

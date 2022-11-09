@@ -1,3 +1,13 @@
+
+check_class <- function(x, object) {
+  if (any(!x %in% class(object))) stop(sprintf("Input object must be class %s", x))
+}
+
+# Enable parallelisation of main modelling loop for MacOS and Linux only
+check_parallel <- function() "unix" %in% .Platform$OS.type
+# ggplot doesn't work with process forking on MacOS; however it works fine on Linux and Windows
+check_parallel_plot <- function() !"Darwin" %in% Sys.info()["sysname"]
+
 ####################################################################
 #' robyn_onepagers
 #'
@@ -354,3 +364,4 @@ robyn_onepagers <- function(InputCollect, OutputCollect, select_model = NULL, qu
   return(invisible(parallelResult[[1]]))
 }
 # end
+

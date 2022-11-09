@@ -28,22 +28,20 @@
 #' @importFrom ggridges geom_density_ridges geom_density_ridges_gradient
 #' @importFrom glmnet cv.glmnet glmnet
 #' @importFrom jsonlite fromJSON toJSON write_json read_json
-#' @importFrom lares check_opts clusterKmeans formatNum freqs glued ohse removenacols
-#' theme_lares `%>%` scale_x_abbr scale_x_percent scale_y_percent scale_y_abbr try_require v2t
-#' @importFrom lubridate is.Date day floor_date
+#' @importFrom lubridate is.Date day floor_date `%m-%`
+#' @importFrom lares check_opts clusterKmeans formatNum freqs glued ohse removenacols theme_lares `%>%` scale_x_abbr scale_x_percent scale_y_percent scale_y_abbr try_require v2t
 #' @importFrom minpack.lm nlsLM
 #' @importFrom nloptr nloptr
 #' @importFrom parallel detectCores
 #' @importFrom patchwork guide_area plot_layout plot_annotation wrap_plots
 #' @importFrom prophet add_regressor fit.prophet prophet
-#' @importFrom reticulate tuple use_condaenv import conda_create conda_install py_module_available
-#' virtualenv_create py_install use_virtualenv
+#' @importFrom reticulate tuple use_condaenv import conda_create conda_install py_module_available virtualenv_create py_install use_virtualenv
 #' @importFrom rPref low psel
-#' @importFrom stats AIC BIC coef complete.cases dgamma dnorm end lm model.matrix na.omit
-#' nls.control median qt sd predict pweibull dweibull quantile qunif reorder rnorm start setNames
+#' @importFrom stats AIC BIC coef complete.cases dgamma dnorm end lm model.matrix na.omit nls.control median qt sd predict pweibull dweibull quantile qunif reorder rnorm start setNames
 #' @importFrom stringr str_count str_detect str_remove str_which str_extract str_replace
 #' @importFrom tidyr pivot_longer pivot_wider
 #' @importFrom utils askYesNo flush.console head setTxtProgressBar tail txtProgressBar write.csv
+#' @importFrom Robyn adstock_geometric adstock_weibull
 "_PACKAGE"
 
 if (getRversion() >= "2.15.1") {

@@ -11,9 +11,18 @@
 # ....
 
 
+# validation_test(InputCollect, OutputCollect, dt_simulated_weekly, post_period, select_model)
 
 library(Robyn)
 library(RobynSuggestion)
+
+print("=====================================================")
+print("[Progress] Step 5: Get Channel Boundary")
+InputCollect$paid_media_spends
+budget_low <- c(200000, 200000, 60000, 100000, 30000)
+budget_high <- c(400000, 400000, 100000, 200000, 100000)
+exp_spends <- 800000
+budget_bd <- budget_boundary(InputCollect, budget_low, budget_high, exp_spends)
 
 Sys.setenv(R_FUTURE_FORK_ENABLE = "true")
 options(future.fork.enable = TRUE)
@@ -201,13 +210,7 @@ print(ExportedModel)
 #### Step 5: Get channel boundary
 # Suggest 1 function:
 # 1) budget_boundary
-print("=====================================================")
-print("[Progress] Step 5: Get Channel Boundary")
-InputCollect$paid_media_spends
-budget_low <- c(200000, 200000, 60000, 100000, 30000)
-budget_high <- c(400000, 400000, 100000, 200000, 100000)
-exp_spends <- 800000
-budget_bd <- budget_boundary(InputCollect, budget_low, budget_high, exp_spends)
+
 
 
 ###########################################
@@ -332,9 +335,6 @@ result_total_post(InputCollect, OutputCollect, dt_simulated_weekly, post_period,
 
 print("=====================================================")
 print("[Progress] Step 10: Validate the results by history and prediction")
-realized_value
-predict_media_response
-predict_media_dependent
 validation_test(InputCollect, OutputCollect, dt_simulated_weekly, post_period, select_model)
 
 
@@ -363,6 +363,7 @@ result_media_new(InputCollect, OutputCollect,
   type = "mean"
 )
 
+media_metric <- "tv_S"
 result_media_new(InputCollect, OutputCollect,
   "print_S",
   select_model,
@@ -375,7 +376,6 @@ result_media_post_new(InputCollect, OutputCollect,
   select_model,
   type = "mean"
 )
-
 result_media_post(InputCollect, OutputCollect,
   dt_simulated_weekly,
   post_period,
@@ -385,5 +385,5 @@ result_media_post(InputCollect, OutputCollect,
 )
 
 result_total_new(InputCollect, OutputCollect, select_model)
-
 result_total_post_new(InputCollect, OutputCollect, dt_simulated_weekly, post_period, select_model)
+validation_test_new(InputCollect, OutputCollect, post_data, post_period, select_model)
