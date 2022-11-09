@@ -4,10 +4,10 @@
 #' To help marketers set their lower and upper budget
 #' boundaries in a more intuitive way.
 #'
-#' @param InputCollect TODO::Type. TODO::Description
-#' @param cost_input_low TODO::Type. TODO::Description
-#' @param cost_input_high TODO::Type. TODO::Description
-#' @param total_spends TODO::Type. TODO::Description
+#' @param InputCollect 
+#' @param cost_input_low 
+#' @param cost_input_high 
+#' @param total_spends 
 #' @return List(). Contains list of boundaries.
 #' @export
 generate_budget_boundaries <- function(InputCollect,
@@ -51,9 +51,8 @@ generate_budget_boundaries <- function(InputCollect,
 #' on paid media channels and the rest subtracted from
 #' the average weekly value of the dependent variable.
 #'
-#' @param InputCollect TODO::Type. TODO::Description
-#' @param pre_period TODO::Type. TODO::Description
-#' @return TODO::Type. TODO::Description
+#' @param InputCollect 
+#' @param pre_period 
 #' @export
 decompose_dependent_vars <- function(InputCollect,
                                      pre_period = NULL) {
@@ -90,10 +89,9 @@ decompose_dependent_vars <- function(InputCollect,
 #' indicates the predicted response change from the training period
 #' to the test period.
 #'
-#' @param InputCollect TODO::Type. TODO::Description
-#' @param OutputCollect TODO::Type. TODO::Description
-#' @param select_model TODO::Type. TODO::Description
-#' @return TODO::Type. TODO::Description
+#' @param InputCollect 
+#' @param OutputCollect 
+#' @param select_model 
 #' @export
 get_response_sum_on_trainining <- function(InputCollect,
                                            OutputCollect,
@@ -117,12 +115,11 @@ get_response_sum_on_trainining <- function(InputCollect,
 #' Predicts the sum of the response made by each media
 #' during the test period
 #'
-#' @param InputCollect TODO::Type. TODO::Description
-#' @param OutputCollect TODO::Type. TODO::Description
-#' @param post_data TODO::Type. TODO::Description
-#' @param post_period TODO::Type. TODO::Description
-#' @param select_model TODO::Type. TODO::Description
-#' @return TODO::Type. TODO::Description
+#' @param InputCollect 
+#' @param OutputCollect 
+#' @param post_data 
+#' @param post_period 
+#' @param select_model 
 #' @export
 predict_response_sum_on_test <- function(InputCollect,
                                          OutputCollect,
@@ -149,13 +146,12 @@ predict_response_sum_on_test <- function(InputCollect,
 #' Returns the response and dependent variables made by
 #' each paid media channel during the training period.
 #'
-#' @param InputCollect TODO::Type. TODO::Description
-#' @param OutputCollect TODO::Type. TODO::Description
-#' @param media_metric TODO::Type. TODO::Description
-#' @param select_model TODO::Type. TODO::Description
-#' @param type = "mean" TODO::Type. TODO::Description
+#' @param InputCollect 
+#' @param OutputCollect 
+#' @param media_metric 
+#' @param select_model 
+#' @param type = "mean" 
 #' @param pre_period = Null
-#' @return TODO::Type. TODO::Description
 #' @export
 get_individual_result <- function(InputCollect,
                                   OutputCollect,
@@ -223,13 +219,12 @@ get_individual_result <- function(InputCollect,
 #' Predicts the response and dependent variables made by each media
 #' during the test period
 #'
-#' @param InputCollect TODO::Type. TODO::Description
-#' @param OutputCollect TODO::Type. TODO::Description
-#' @param post_data TODO::Type. TODO::Description
-#' @param post_period TODO::Type. TODO::Description
+#' @param InputCollect 
+#' @param OutputCollect 
+#' @param post_data 
+#' @param post_period 
 #' @param media_metric
-#' @param type = "mean" TODO::Type. TODO::Description
-#' @return TODO::Type. TODO::Description
+#' @param type = "mean" 
 #' @export
 predict_individual_result <- function(InputCollect,
                                       OutputCollect,

@@ -7,12 +7,12 @@
 compare_zero_spend(InputCollect, AllocatorCollect, pre_date)
 }
 \arguments{
-\item{InputCollect}{TODO::Type. TODO::Description}
+\item{InputCollect}{}
 
-\item{pre_date}{TODO::Type. TODO::Description}
+\item{pre_date}{}
 }
 \value{
-TODO::Type. TODO::Description
+
 }
 \description{
 TODO:: Write description

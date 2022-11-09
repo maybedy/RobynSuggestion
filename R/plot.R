@@ -17,18 +17,18 @@ check_parallel_plot <- function() !"Darwin" %in% Sys.info()["sysname"]
 #' Reason: Practical suggestion for checking convergence
 #' on the resulted plots, (not only logs)
 #'
-#' @param InputCollect TODO::Type. TODO::Description
-#' @param OutputCollect TODO::Type. TODO::Description
-#' @param select_model = Null TODO::Type. TODO::Description
-#' @param quiet = False TODO::Type. TODO::Description
-#' @param export = True TODO::Type. TODO::Description
-#' @return List(). Contains list of hyperparameters.
+#' @param InputCollect
+#' @param OutputCollect
+#' @param select_model = Null
+#' @param quiet = False
+#' @param export = True
+#' @return List().
 #' @export
 robyn_onepagers_revised <- function(InputCollect,
-                            OutputCollect,
-                            select_model = NULL,
-                            quiet = FALSE,
-                            export = TRUE) {
+                                    OutputCollect,
+                                    select_model = NULL,
+                                    quiet = FALSE,
+                                    export = TRUE) {
   check_class("robyn_outputs", OutputCollect)
   if (TRUE) {
     pareto_fronts <- OutputCollect$pareto_fronts

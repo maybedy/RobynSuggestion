@@ -13,16 +13,16 @@ validate_predicts_zero_spend(
 )
 }
 \arguments{
-\item{InputCollect}{TODO::Type. TODO::Description}
+\item{InputCollect}{}
 
-\item{OutputCollect}{TODO::Type. TODO::Description}
+\item{OutputCollect}{}
 
-\item{post_data}{TODO::Type. TODO::Description}
+\item{post_data}{}
 
-\item{post_period}{TODO::Type. TODO::Description}
+\item{post_period}{}
 }
 \value{
-TODO::Type. TODO::Description
+
 }
 \description{
 TODO:: Write description

@@ -7,12 +7,12 @@
 get_response_sum_on_train_zero_spend(InputCollect, OutputCollect, select_model)
 }
 \arguments{
-\item{InputCollect}{TODO::Type. TODO::Description}
+\item{InputCollect}{}
 
-\item{OutputCollect}{TODO::Type. TODO::Description}
+\item{OutputCollect}{}
 }
 \value{
-TODO::Type. TODO::Description
+
 }
 \description{
 TODO:: Write description

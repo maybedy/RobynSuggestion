@@ -7,14 +7,14 @@
 get_response_sum_on_trainining(InputCollect, OutputCollect, select_model)
 }
 \arguments{
-\item{InputCollect}{TODO::Type. TODO::Description}
+\item{InputCollect}{}
 
-\item{OutputCollect}{TODO::Type. TODO::Description}
+\item{OutputCollect}{}
 
-\item{select_model}{TODO::Type. TODO::Description}
+\item{select_model}{}
 }
 \value{
-TODO::Type. TODO::Description
+
 }
 \description{
 Returns the sum of the response made by each paid media channel

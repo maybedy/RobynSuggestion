@@ -12,14 +12,14 @@ get_allocator_benchmarks_zero_spend(
 )
 }
 \arguments{
-\item{AllocatorCollect_opt}{TODO::Type. TODO::Description}
+\item{AllocatorCollect_opt}{}
 
-\item{AllocatorCollect_hist}{TODO::Type. TODO::Description}
+\item{AllocatorCollect_hist}{}
 
-\item{AllocatorCollect_recent}{TODO::Type. TODO::Description}
+\item{AllocatorCollect_recent}{}
 }
 \value{
-TODO::Type. TODO::Description
+
 }
 \description{
 TODO:: Write description

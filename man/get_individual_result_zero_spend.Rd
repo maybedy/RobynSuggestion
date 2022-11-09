@@ -14,20 +14,20 @@ get_individual_result_zero_spend(
 )
 }
 \arguments{
-\item{InputCollect}{TODO::Type. TODO::Description}
+\item{InputCollect}{}
 
-\item{OutputCollect}{TODO::Type. TODO::Description}
+\item{OutputCollect}{}
 
-\item{media_metric}{TODO::Type. TODO::Description}
+\item{media_metric}{}
 
-\item{select_model}{TODO::Type. TODO::Description}
+\item{select_model}{}
 
 \item{type}{= "mean"}
 
 \item{pre_period}{= Null}
 }
 \value{
-TODO::Type. TODO::Description
+
 }
 \description{
 TODO:: Write description

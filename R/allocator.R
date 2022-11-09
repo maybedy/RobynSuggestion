@@ -4,10 +4,9 @@
 #' Provides some critical benchmarks to help analysts
 #' to evaluate the efficiency of the suggested optimal allocation.
 #'
-#' @param AllocatorCollect_opt TODO::Type. TODO::Description
-#' @param AllocatorCollect_hist TODO::Type. TODO::Description
-#' @param AllocatorCollect_recent TODO::Type. TODO::Description
-#' @return List(). Contains list of hyperparameters.
+#' @param AllocatorCollect_opt
+#' @param AllocatorCollect_hist
+#' @param AllocatorCollect_recent
 #' @export
 get_allocator_benchmarks <- function(AllocatorCollect_opt,
                                      AllocatorCollect_hist,

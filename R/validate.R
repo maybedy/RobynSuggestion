@@ -1,20 +1,19 @@
 ####################################################################
 #' ***Suggestion*** Validate the results by history and prediction
 #'
-#' compare history and prediction
-#' need to modify the output form
-#' @param InputCollect TODO::Type. TODO::Description
-#' @param OutputCollect TODO::Type. TODO::Description
-#' @param post_data TODO::Type. TODO::Description
-#' @param post_period TODO::Type. TODO::Description
-#' @param select_model TODO::Type. TODO::Description
-#' @return TODO::Type. TODO::Description
+#' Presents a table comparing the predicted values from each approach
+#' with the actual values and calculating the errors
+#' @param InputCollect
+#' @param OutputCollect
+#' @param post_data
+#' @param post_period
+#' @param select_model
 #' @export
 validate_predicts <- function(InputCollect,
-                            OutputCollect,
-                            post_data,
-                            post_period,
-                            select_model) {
+                              OutputCollect,
+                              post_data,
+                              post_period,
+                              select_model) {
   history <- get_response_sum_on_trainining(InputCollect, OutputCollect, select_model)
   predict <- predict_response_sum_on_test(InputCollect, OutputCollect, post_data, post_period, select_model)
   decompose <- decompose_dependent_vars(InputCollect)

@@ -7,12 +7,12 @@
 decompose_dependent_vars(InputCollect, pre_period = NULL)
 }
 \arguments{
-\item{InputCollect}{TODO::Type. TODO::Description}
+\item{InputCollect}{}
 
-\item{pre_period}{TODO::Type. TODO::Description}
+\item{pre_period}{}
 }
 \value{
-TODO::Type. TODO::Description
+
 }
 \description{
 Decomposing the dependent variable into paid media channels and the rest

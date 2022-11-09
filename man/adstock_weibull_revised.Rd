@@ -33,7 +33,7 @@ effect.}
 the training period}
 }
 \value{
-TODO::Type. TODO::Description
+
 }
 \description{
 Newly defined the adstock_weibull_revised, which receive

@@ -7,14 +7,14 @@
 put_hyper_params(InputCollect = NULL, vars_lst, hyper_lst)
 }
 \arguments{
-\item{InputCollect}{TODO::Type. TODO::Description}
+\item{InputCollect}{}
 
-\item{vars_lst}{TODO::Type. TODO::Description}
+\item{vars_lst}{}
 
-\item{hyper_lst}{TODO::Type. TODO::Description}
+\item{hyper_lst}{}
 }
 \value{
-TODO::Type. TODO::Description
+
 }
 \description{
 Concatenates multiple lists, each of which groups channels

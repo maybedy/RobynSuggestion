@@ -4,10 +4,9 @@
 #' Concatenates multiple lists, each of which groups channels
 #' sharing the same hyperparameter ranges.
 #'
-#' @param InputCollect TODO::Type. TODO::Description
-#' @param vars_lst TODO::Type. TODO::Description
-#' @param hyper_lst TODO::Type. TODO::Description
-#' @return TODO::Type. TODO::Description
+#' @param InputCollect
+#' @param vars_lst
+#' @param hyper_lst
 #' @export
 put_hyper_params <- function(InputCollect = NULL,
                              vars_lst,

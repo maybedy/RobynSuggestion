@@ -427,6 +427,7 @@ predict_response_sum_on_test_zero_spend(
   select_model
 )
 
+post_data <- data("dt_simulated_weekly")
 validate_predicts_zero_spend(
   InputCollect,
   OutputCollect,

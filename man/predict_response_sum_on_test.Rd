@@ -13,18 +13,18 @@ predict_response_sum_on_test(
 )
 }
 \arguments{
-\item{InputCollect}{TODO::Type. TODO::Description}
+\item{InputCollect}{}
 
-\item{OutputCollect}{TODO::Type. TODO::Description}
+\item{OutputCollect}{}
 
-\item{post_data}{TODO::Type. TODO::Description}
+\item{post_data}{}
 
-\item{post_period}{TODO::Type. TODO::Description}
+\item{post_period}{}
 
-\item{select_model}{TODO::Type. TODO::Description}
+\item{select_model}{}
 }
 \value{
-TODO::Type. TODO::Description
+
 }
 \description{
 Predicts the sum of the response made by each media

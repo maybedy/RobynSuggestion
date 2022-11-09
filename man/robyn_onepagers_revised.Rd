@@ -13,15 +13,15 @@ robyn_onepagers_revised(
 )
 }
 \arguments{
-\item{InputCollect}{TODO::Type. TODO::Description}
+\item{InputCollect}{}
 
-\item{OutputCollect}{TODO::Type. TODO::Description}
+\item{OutputCollect}{}
 
-\item{select_model}{= Null TODO::Type. TODO::Description}
+\item{select_model}{= Null }
 
-\item{quiet}{= False TODO::Type. TODO::Description}
+\item{quiet}{= False }
 
-\item{export}{= True TODO::Type. TODO::Description}
+\item{export}{= True }
 }
 \value{
 List(). Contains list of hyperparameters.

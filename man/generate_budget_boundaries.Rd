@@ -12,13 +12,13 @@ generate_budget_boundaries(
 )
 }
 \arguments{
-\item{InputCollect}{TODO::Type. TODO::Description}
+\item{InputCollect}{}
 
-\item{cost_input_low}{TODO::Type. TODO::Description}
+\item{cost_input_low}{}
 
-\item{cost_input_high}{TODO::Type. TODO::Description}
+\item{cost_input_high}{}
 
-\item{total_spends}{TODO::Type. TODO::Description}
+\item{total_spends}{}
 }
 \value{
 List(). Contains list of boundaries.

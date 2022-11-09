@@ -71,7 +71,7 @@ saturation_hill_revised <- function(x,
 #' effect.
 #' @param index_end Numeric. Makes scales have a fixed value generated from
 #' the training period
-#' @return TODO::Type. TODO::Description
+#' @return
 #' @export
 adstock_weibull_revised <- function(x,
                                     shape,

@@ -11,11 +11,11 @@ get_allocator_benchmarks(
 )
 }
 \arguments{
-\item{AllocatorCollect_opt}{TODO::Type. TODO::Description}
+\item{AllocatorCollect_opt}{}
 
-\item{AllocatorCollect_hist}{TODO::Type. TODO::Description}
+\item{AllocatorCollect_hist}{}
 
-\item{AllocatorCollect_recent}{TODO::Type. TODO::Description}
+\item{AllocatorCollect_recent}{}
 }
 \value{
 List(). Contains list of hyperparameters.
