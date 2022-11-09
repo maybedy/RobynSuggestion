@@ -2,7 +2,7 @@
 % Please edit documentation in R/allocator.R
 \name{get_allocator_benchmarks}
 \alias{get_allocator_benchmarks}
-\title{\emph{\strong{Suggestion}} Allocator Results}
+\title{\emph{\strong{Suggestion}} get_allocator_benchmarks}
 \usage{
 get_allocator_benchmarks(
   AllocatorCollect_opt,
@@ -21,6 +21,6 @@ get_allocator_benchmarks(
 List(). Contains list of hyperparameters.
 }
 \description{
-TODO:: Write description
-Generate analytical result of allocato
+Provides some critical benchmarks to help analysts
+to evaluate the efficiency of the suggested optimal allocation.
 }
