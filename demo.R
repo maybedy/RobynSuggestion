@@ -119,8 +119,6 @@ input_hyper$type3 <- list(
   scales = c(0, 0.5)
 )
 hyperparameters <- put_hyppar(InputCollect, input_vars, input_hyper)
-
-InputCollect <- robyn_inputs(InputCollect = InputCollect, hyperparameters = hyperparameters)
 print(InputCollect)
 
 
