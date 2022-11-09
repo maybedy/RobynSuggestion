@@ -6,17 +6,7 @@
 \usage{
 compare_zero_spend(InputCollect, AllocatorCollect, pre_date)
 }
-\arguments{
-\item{InputCollect}{}
-
-\item{pre_date}{}
-}
-\value{
-
-}
 \description{
-TODO:: Write description
-\emph{\strong{Suggestion}}: Able to analyze without non-zero spend days]
 focus on all days (w/ non-zero spend days)
 check accuracy with dependent
 }

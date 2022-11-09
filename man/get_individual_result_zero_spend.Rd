@@ -14,20 +14,9 @@ get_individual_result_zero_spend(
 )
 }
 \arguments{
-\item{InputCollect}{}
-
-\item{OutputCollect}{}
-
-\item{media_metric}{}
-
-\item{select_model}{}
-
 \item{type}{= "mean"}
 
 \item{pre_period}{= Null}
-}
-\value{
-
 }
 \description{
 TODO:: Write description

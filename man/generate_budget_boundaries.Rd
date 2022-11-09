@@ -11,15 +11,6 @@ generate_budget_boundaries(
   total_spends
 )
 }
-\arguments{
-\item{InputCollect}{}
-
-\item{cost_input_low}{}
-
-\item{cost_input_high}{}
-
-\item{total_spends}{}
-}
 \value{
 List(). Contains list of boundaries.
 }

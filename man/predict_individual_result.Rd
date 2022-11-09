@@ -15,18 +15,7 @@ predict_individual_result(
 )
 }
 \arguments{
-\item{InputCollect}{}
-
-\item{OutputCollect}{}
-
-\item{post_data}{}
-
-\item{post_period}{}
-
-\item{type}{= "mean" }
-}
-\value{
-
+\item{type}{= "mean"}
 }
 \description{
 Predicts the response and dependent variables made by each media

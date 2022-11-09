@@ -12,21 +12,7 @@ validate_predicts(
   select_model
 )
 }
-\arguments{
-\item{InputCollect}{}
-
-\item{OutputCollect}{}
-
-\item{post_data}{}
-
-\item{post_period}{}
-
-\item{select_model}{}
-}
-\value{
-
-}
 \description{
-compare history and prediction
-need to modify the output form
+Presents a table comparing the predicted values from each approach
+with the actual values and calculating the errors
 }

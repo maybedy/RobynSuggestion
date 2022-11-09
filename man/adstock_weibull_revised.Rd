@@ -32,9 +32,6 @@ effect.}
 \item{index_end}{Numeric. Makes scales have a fixed value generated from
 the training period}
 }
-\value{
-
-}
 \description{
 Newly defined the adstock_weibull_revised, which receive
 an additional argument index_end that makes scales have

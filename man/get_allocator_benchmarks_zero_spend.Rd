@@ -11,16 +11,6 @@ get_allocator_benchmarks_zero_spend(
   AllocatorCollect_recent
 )
 }
-\arguments{
-\item{AllocatorCollect_opt}{}
-
-\item{AllocatorCollect_hist}{}
-
-\item{AllocatorCollect_recent}{}
-}
-\value{
-
-}
 \description{
-TODO:: Write description
+\emph{\strong{Suggestion}} get_allocator_benchmarks_zero_spend
 }

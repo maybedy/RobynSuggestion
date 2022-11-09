@@ -12,20 +12,6 @@ predict_response_sum_on_test(
   select_model
 )
 }
-\arguments{
-\item{InputCollect}{}
-
-\item{OutputCollect}{}
-
-\item{post_data}{}
-
-\item{post_period}{}
-
-\item{select_model}{}
-}
-\value{
-
-}
 \description{
 Predicts the sum of the response made by each media
 during the test period

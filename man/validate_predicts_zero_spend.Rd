@@ -12,18 +12,6 @@ validate_predicts_zero_spend(
   select_model
 )
 }
-\arguments{
-\item{InputCollect}{}
-
-\item{OutputCollect}{}
-
-\item{post_data}{}
-
-\item{post_period}{}
-}
-\value{
-
-}
 \description{
 TODO:: Write description
 compare history and prediction

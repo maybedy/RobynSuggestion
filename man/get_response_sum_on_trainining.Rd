@@ -6,16 +6,6 @@
 \usage{
 get_response_sum_on_trainining(InputCollect, OutputCollect, select_model)
 }
-\arguments{
-\item{InputCollect}{}
-
-\item{OutputCollect}{}
-
-\item{select_model}{}
-}
-\value{
-
-}
 \description{
 Returns the sum of the response made by each paid media channel
 during the training period.

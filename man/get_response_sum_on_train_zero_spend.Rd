@@ -6,14 +6,6 @@
 \usage{
 get_response_sum_on_train_zero_spend(InputCollect, OutputCollect, select_model)
 }
-\arguments{
-\item{InputCollect}{}
-
-\item{OutputCollect}{}
-}
-\value{
-
-}
 \description{
 TODO:: Write description
 }

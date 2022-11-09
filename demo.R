@@ -10,7 +10,6 @@
 # You can check revised version for considering zero spending weeks
 # 0. You can check details of our suggestion in each definition of function
 
-
 ################################################################
 #### Step 0: Preparation
 
@@ -155,7 +154,7 @@ OutputModels <- robyn_run(
   # cores = NULL, # default to max available
   # add_penalty_factor = FALSE, # Untested feature. Use with caution.
   # 2000 recommended for the dummy dataset with no calibration
-  iterations = 200, # 2000,
+  iterations = 2000, # 2000,
   # 5 recommended for the dummy dataset
   trials = 1,
   # outputs = FALSE disables direct model output - robyn_outputs()
@@ -438,11 +437,11 @@ predict_response_sum_on_test_zero_spend(
 )
 
 print("[Progress] Step 10': Validation")
-post_data <- data("dt_simulated_weekly")
+post_data <- data(dt_simulated_weekly)
 validate_predicts_zero_spend(
   InputCollect,
   OutputCollect,
-  post_data, # Error
+  post_data,
   post_period,
   select_model
 )

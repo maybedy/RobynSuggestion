@@ -6,16 +6,6 @@
 \usage{
 put_hyper_params(InputCollect = NULL, vars_lst, hyper_lst)
 }
-\arguments{
-\item{InputCollect}{}
-
-\item{vars_lst}{}
-
-\item{hyper_lst}{}
-}
-\value{
-
-}
 \description{
 Concatenates multiple lists, each of which groups channels
 sharing the same hyperparameter ranges.

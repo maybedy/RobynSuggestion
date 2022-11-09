@@ -10,16 +10,6 @@ get_allocator_benchmarks(
   AllocatorCollect_recent
 )
 }
-\arguments{
-\item{AllocatorCollect_opt}{}
-
-\item{AllocatorCollect_hist}{}
-
-\item{AllocatorCollect_recent}{}
-}
-\value{
-List(). Contains list of hyperparameters.
-}
 \description{
 Provides some critical benchmarks to help analysts
 to evaluate the efficiency of the suggested optimal allocation.

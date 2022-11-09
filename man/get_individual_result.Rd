@@ -14,20 +14,9 @@ get_individual_result(
 )
 }
 \arguments{
-\item{InputCollect}{}
-
-\item{OutputCollect}{}
-
-\item{media_metric}{}
-
-\item{select_model}{}
-
-\item{type}{= "mean" }
+\item{type}{= "mean"}
 
 \item{pre_period}{= Null}
-}
-\value{
-
 }
 \description{
 Returns the response and dependent variables made by

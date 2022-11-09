@@ -13,18 +13,14 @@ robyn_onepagers_revised(
 )
 }
 \arguments{
-\item{InputCollect}{}
+\item{select_model}{= Null}
 
-\item{OutputCollect}{}
+\item{quiet}{= False}
 
-\item{select_model}{= Null }
-
-\item{quiet}{= False }
-
-\item{export}{= True }
+\item{export}{= True}
 }
 \value{
-List(). Contains list of hyperparameters.
+List().
 }
 \description{
 Suggestion included in (82:121). Original version is in plot.R

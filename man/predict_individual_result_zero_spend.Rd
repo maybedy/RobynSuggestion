@@ -15,18 +15,7 @@ predict_individual_result_zero_spend(
 )
 }
 \arguments{
-\item{InputCollect}{}
-
-\item{OutputCollect}{}
-
-\item{post_data}{}
-
-\item{post_period}{}
-
 \item{type}{= "mean"}
-}
-\value{
-
 }
 \description{
 TODO:: Write description

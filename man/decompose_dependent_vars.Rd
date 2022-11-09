@@ -6,14 +6,6 @@
 \usage{
 decompose_dependent_vars(InputCollect, pre_period = NULL)
 }
-\arguments{
-\item{InputCollect}{}
-
-\item{pre_period}{}
-}
-\value{
-
-}
 \description{
 Decomposing the dependent variable into paid media channels and the rest
 }
