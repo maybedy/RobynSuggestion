@@ -1,16 +1,17 @@
 ####################################################################
-#' [Suggestion] Set hyperparameters from Input
+#' [Suggestion] put_hyper_params
 #'
-#' TODO:: Write description
+#' Concatenates multiple lists, each of which groups channels
+#' sharing the same hyperparameter ranges.
 #'
 #' @param InputCollect TODO::Type. TODO::Description
 #' @param vars_lst TODO::Type. TODO::Description
 #' @param hyper_lst TODO::Type. TODO::Description
 #' @return TODO::Type. TODO::Description
 #' @export
-put_hyppar <- function(InputCollect = NULL,
-                       vars_lst,
-                       hyper_lst) {
+put_hyper_params <- function(InputCollect = NULL,
+                             vars_lst,
+                             hyper_lst) {
   vars_temp <- c()
   vars_all <- InputCollect$all_media
   for (i in 1:length(vars_lst)) {

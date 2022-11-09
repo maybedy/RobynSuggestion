@@ -10,9 +10,9 @@ check_parallel_plot <- function() !"Darwin" %in% Sys.info()["sysname"]
 
 # Suggestions
 ####################################################################
-#' [Suggestion included] robyn_onepagers
+#' [Suggestion included] robyn_onepagers_revised
 #'
-#' Suggestion included in (63:105). Original version is in plot.R
+#' Suggestion included in (82:121). Original version is in plot.R
 #' Suggestion: Message of Convergence on plot.
 #' Reason: Practical suggestion for checking convergence
 #' on the resulted plots, (not only logs)
@@ -24,7 +24,7 @@ check_parallel_plot <- function() !"Darwin" %in% Sys.info()["sysname"]
 #' @param export = True TODO::Type. TODO::Description
 #' @return List(). Contains list of hyperparameters.
 #' @export
-robyn_onepagers <- function(InputCollect,
+robyn_onepagers_revised <- function(InputCollect,
                             OutputCollect,
                             select_model = NULL,
                             quiet = FALSE,
@@ -79,7 +79,7 @@ robyn_onepagers <- function(InputCollect,
 
     # parallelResult <- for (sid in uniqueSol) { # sid = uniqueSol[1]
 
-    ######## [!!! Suggestion: Message of Convergence on plot ] ###########
+    ######## [!!! Suggestion: Message of Convergence on plot ] #####
     # Reason: practical suggestion for checking convergence
     # on the resulted plots, (not only logs)
     convergence <- list()

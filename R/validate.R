@@ -1,4 +1,4 @@
-# 1. put_hyppar: Put Hyperparam
+# 1. put_hyper_params: Put Hyperparam
 #    -> demo.R
 # 2. generate_budget_boundaries: Get Boundary
 #    -> suggest/budget.R
