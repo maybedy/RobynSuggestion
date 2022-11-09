@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.R
 \name{robyn_onepagers_revised}
 \alias{robyn_onepagers_revised}
-\title{robyn_onepagers_revised}
+\title{\emph{\strong{Suggestion}} included] robyn_onepagers_revised}
 \usage{
 robyn_onepagers_revised(
   InputCollect,
@@ -27,7 +27,8 @@ robyn_onepagers_revised(
 List(). Contains list of hyperparameters.
 }
 \description{
-TODO:: Write description
-\link{Suggestion included in the function (63:105)}
-Original version is in plot.R
+Suggestion included in (82:121). Original version is in plot.R
+Suggestion: Message of Convergence on plot.
+Reason: Practical suggestion for checking convergence
+on the resulted plots, (not only logs)
 }

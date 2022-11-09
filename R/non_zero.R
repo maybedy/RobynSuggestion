@@ -1,9 +1,9 @@
 
 ####################################################################
-#' [Suggestion] Compare Non-zero
+#' ***Suggestion*** compare_nonzero
 #'
 #' TODO:: Write description
-#' [Suggestion: Able to analyze without non-zero spend days]
+#' ***Suggestion***: Able to analyze without non-zero spend days]
 #' focus on all days (w/ non-zero spend days)
 #' check accuracy with dependent
 #' @param InputCollect TODO::Type. TODO::Description
@@ -30,15 +30,17 @@ compare_nonzero <- function(InputCollect,
 }
 
 ####################################################################
-#' [Suggestion] Allocator_results_new
+#' ***Suggestion*** Allocator_results_new
 #'
 #' TODO:: Write description
+#' @param InputCollect
 #' @param AllocatorCollect_opt TODO::Type. TODO::Description
 #' @param AllocatorCollect_hist TODO::Type. TODO::Description
 #' @param AllocatorCollect_recent TODO::Type. TODO::Description
 #' @return TODO::Type. TODO::Description
 #' @export
-Allocator_results_new <- function(AllocatorCollect_opt,
+Allocator_results_new <- function(InputCollect,
+                                  AllocatorCollect_opt,
                                   AllocatorCollect_hist,
                                   AllocatorCollect_recent) {
   temp <- data.frame(
@@ -79,7 +81,7 @@ Allocator_results_new <- function(AllocatorCollect_opt,
 }
 
 ####################################################################
-#' [Suggestion] Allocator_results_new
+#' ***Suggestion*** Allocator_results_new
 #'
 #' TODO:: Write description
 #' @param InputCollect TODO::Type. TODO::Description
@@ -91,11 +93,11 @@ Allocator_results_new <- function(AllocatorCollect_opt,
 #' @return TODO::Type. TODO::Description
 #' @export
 get_individual_result_new <- function(InputCollect,
-                             OutputCollect,
-                             media_metric,
-                             select_model,
-                             type = "mean",
-                             pre_period = NULL) {
+                                      OutputCollect,
+                                      media_metric,
+                                      select_model,
+                                      type = "mean",
+                                      pre_period = NULL) {
   dt_hyppar <- OutputCollect$resultHypParam
   dt_coef <- OutputCollect$xDecompAgg
   date_var <- InputCollect$date_var
@@ -150,7 +152,7 @@ get_individual_result_new <- function(InputCollect,
 media_metric <- "tv_S"
 
 ####################################################################
-#' [Suggestion] Allocator_results_new
+#' ***Suggestion*** predict_individual_result_new
 #'
 #' TODO:: Write description
 #' form of the post_data is equal to the form of the InputCollect$dt_input
@@ -165,12 +167,12 @@ media_metric <- "tv_S"
 #' @return TODO::Type. TODO::Description
 #' @export
 predict_individual_result_new <- function(InputCollect,
-                                  OutputCollect,
-                                  post_data,
-                                  post_period,
-                                  media_metric,
-                                  select_model,
-                                  type = "mean") {
+                                          OutputCollect,
+                                          post_data,
+                                          post_period,
+                                          media_metric,
+                                          select_model,
+                                          type = "mean") {
   adstock <- InputCollect$adstock
   dt_hyppar <- OutputCollect$resultHypParam
   dt_coef <- OutputCollect$xDecompAgg
@@ -228,7 +230,7 @@ predict_individual_result_new <- function(InputCollect,
 }
 
 ####################################################################
-#' [Suggestion] Allocator_results_new
+#' ***Suggestion*** get_response_sum_on_trainining_new
 #'
 #' TODO:: Write description
 #' @param InputCollect TODO::Type. TODO::Description
@@ -237,8 +239,8 @@ predict_individual_result_new <- function(InputCollect,
 #' @return TODO::Type. TODO::Description
 #' @export
 get_response_sum_on_trainining_new <- function(InputCollect,
-                             OutputCollect,
-                             select_model) {
+                                               OutputCollect,
+                                               select_model) {
   paid_media_spends <- InputCollect$paid_media_spends
   response <- 0
   dependent <- 0
@@ -252,7 +254,7 @@ get_response_sum_on_trainining_new <- function(InputCollect,
 }
 
 ####################################################################
-#' [Suggestion] Allocator_results_new
+#' ***Suggestion*** predict_response_sum_on_test_new
 #'
 #' TODO:: Write description
 #' @param InputCollect TODO::Type. TODO::Description
@@ -263,10 +265,10 @@ get_response_sum_on_trainining_new <- function(InputCollect,
 #' @return TODO::Type. TODO::Description
 #' @export
 predict_response_sum_on_test_new <- function(InputCollect,
-                                  OutputCollect,
-                                  post_data,
-                                  post_period,
-                                  select_model) {
+                                             OutputCollect,
+                                             post_data,
+                                             post_period,
+                                             select_model) {
   paid_media_spends <- InputCollect$paid_media_spends
   response <- 0
   dependent <- 0
@@ -280,7 +282,7 @@ predict_response_sum_on_test_new <- function(InputCollect,
 }
 
 ####################################################################
-#' [Suggestion] Allocator_results_new
+#' ***Suggestion*** validation_test_new
 #'
 #' TODO:: Write description
 #' compare history and prediction
@@ -315,6 +317,6 @@ validation_test_new <- function(InputCollect,
   )
   temp[1, ] <- c("response", round(predict_media_response, 0), round(total_dependent, 0), round(100 * (predict_media_response / total_dependent - 1), 2))
   temp[2, ] <- c("dependent", round(predict_media_dependent, 0), round(total_dependent, 0), round(100 * (predict_media_dependent / total_dependent - 1), 2))
-  
+
   return(temp)
 }

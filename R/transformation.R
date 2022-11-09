@@ -9,7 +9,7 @@
 
 
 ####################################################################
-#' [Suggestion] saturation_hill_revised
+#' ***Suggestion*** saturation_hill_revised
 #'
 #' Newly defined the saturation_hill_revised functions,
 #' which receive an additional argument index_end that
@@ -53,7 +53,7 @@ saturation_hill_revised <- function(x,
 
 
 ####################################################################
-#' [Suggestion] adstock_weibull_revised
+#' ***Suggestion*** adstock_weibull_revised
 #'
 #' Newly defined the adstock_weibull_revised, which receive
 #' an additional argument index_end that makes scales have

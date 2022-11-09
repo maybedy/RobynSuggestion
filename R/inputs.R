@@ -1,5 +1,5 @@
 ####################################################################
-#' [Suggestion] put_hyper_params
+#' ***Suggestion*** put_hyper_params
 #'
 #' Concatenates multiple lists, each of which groups channels
 #' sharing the same hyperparameter ranges.

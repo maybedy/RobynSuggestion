@@ -1,5 +1,5 @@
 ####################################################################
-#' [Suggestion] generate_generate_budget_boundaries
+#' ***Suggestion*** generate_generate_budget_boundaries
 #'
 #' To help marketers set their lower and upper budget
 #' boundaries in a more intuitive way.
@@ -43,7 +43,7 @@ generate_budget_boundaries <- function(InputCollect,
 }
 
 ####################################################################
-#' [Suggestion] decompose_dependent_vars
+#' ***Suggestion*** decompose_dependent_vars
 #'
 #' Decomposing the dependent variable into paid media channels and the rest
 #'
@@ -80,7 +80,7 @@ decompose_dependent_vars <- function(InputCollect,
 }
 
 ####################################################################
-#' [Suggestion] get_response_sum_on_trainining
+#' ***Suggestion*** get_response_sum_on_trainining
 #'
 #' Returns the sum of the response made by each paid media channel
 #' during the training period.
@@ -112,7 +112,7 @@ get_response_sum_on_trainining <- function(InputCollect,
 }
 
 ####################################################################
-#' [Suggestion] predict_response_sum_on_test
+#' ***Suggestion*** predict_response_sum_on_test
 #'
 #' Predicts the sum of the response made by each media
 #' during the test period
@@ -144,7 +144,7 @@ predict_response_sum_on_test <- function(InputCollect,
 
 
 ####################################################################
-#' [Suggestion] get_individual_result
+#' ***Suggestion*** get_individual_result
 #'
 #' Returns the response and dependent variables made by
 #' each paid media channel during the training period.
@@ -218,7 +218,7 @@ get_individual_result <- function(InputCollect,
 }
 
 ####################################################################
-#' [Suggestion] predict_individual_result
+#' ***Suggestion*** predict_individual_result
 #'
 #' Predicts the response and dependent variables made by each media
 #' during the test period

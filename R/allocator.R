@@ -1,5 +1,5 @@
 ####################################################################
-#' [Suggestion] Allocator Results
+#' ***Suggestion*** Allocator Results
 #'
 #' TODO:: Write description
 #' Generate analytical result of allocato

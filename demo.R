@@ -362,6 +362,7 @@ compare_nonzero(
 )
 
 Allocator_results_new(
+  InputCollect,
   AllocatorCollect_opt,
   AllocatorCollect_hist,
   AllocatorCollect_recent
@@ -415,10 +416,11 @@ predict_response_sum_on_test_new(
   post_period,
   select_model
 )
+
 validation_test_new(
   InputCollect,
   OutputCollect,
-  post_data,
+  post_data, # Error
   post_period,
   select_model
 )

@@ -10,7 +10,7 @@ check_parallel_plot <- function() !"Darwin" %in% Sys.info()["sysname"]
 
 # Suggestions
 ####################################################################
-#' [Suggestion included] robyn_onepagers_revised
+#' ***Suggestion*** included] robyn_onepagers_revised
 #'
 #' Suggestion included in (82:121). Original version is in plot.R
 #' Suggestion: Message of Convergence on plot.
