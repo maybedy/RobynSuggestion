@@ -1,27 +1,3 @@
-# 1. put_hyper_params: Put Hyperparam
-#    -> demo.R
-# 2. generate_budget_boundaries: Get Boundary
-#    -> suggest/budget.R
-# 3. Allocator_results: Get analytical result of allocator
-#    -> suggest/allocator.r
-# 4. decompose_dependent_vars: Decompose KPI of media, non-media, etc
-#    -> suggest/media_analyzer.r
-# 5. saturation_hill_revised, adstock_weibull_revised:
-#    -> suggest/transformation.r
-# 6. get_individual_result, predict_individual_result: get the results of each media
-#    -> suggest/media_analyzer.r
-# 7. get_response_sum_on_trainining, predict_response_sum_on_test: get the result of whole media
-#    -> suggest/media_analyzer.r
-# 8. validation_test: validate. Main Feature
-#    -> suggest/validate.r
-##### For non-zero analytics
-# 9. compare_nonzero
-#    -> suggest/non_zero/comparison.r
-# 10. ...
-
-
-
-
 ####################################################################
 #' ***Suggestion*** Validate the results by history and prediction
 #'
@@ -34,7 +10,7 @@
 #' @param select_model TODO::Type. TODO::Description
 #' @return TODO::Type. TODO::Description
 #' @export
-validation_test <- function(InputCollect,
+validate_predicts <- function(InputCollect,
                             OutputCollect,
                             post_data,
                             post_period,
@@ -58,5 +34,5 @@ validation_test <- function(InputCollect,
   temp[1, ] <- c("response", round(predict_media_response, 0), round(total_dependent, 0), round(100 * (predict_media_response / total_dependent - 1), 2))
   temp[2, ] <- c("dependent", round(predict_media_dependent, 0), round(total_dependent, 0), round(100 * (predict_media_dependent / total_dependent - 1), 2))
 
-  temp
+  return(temp)
 }

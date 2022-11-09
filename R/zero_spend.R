@@ -1,6 +1,6 @@
 
 ####################################################################
-#' ***Suggestion*** compare_nonzero
+#' ***Suggestion*** compare_zero_spend
 #'
 #' TODO:: Write description
 #' ***Suggestion***: Able to analyze without non-zero spend days]
@@ -11,7 +11,7 @@
 #' @param pre_date TODO::Type. TODO::Description
 #' @return TODO::Type. TODO::Description
 #' @export
-compare_nonzero <- function(InputCollect,
+compare_zero_spend <- function(InputCollect,
                             AllocatorCollect,
                             pre_date) {
   dt_optimOut <- AllocatorCollect$dt_optimOut
@@ -30,7 +30,7 @@ compare_nonzero <- function(InputCollect,
 }
 
 ####################################################################
-#' ***Suggestion*** Allocator_results_new
+#' ***Suggestion*** get_allocator_benchmarks_zero_spend
 #'
 #' TODO:: Write description
 #' @param InputCollect
@@ -39,7 +39,7 @@ compare_nonzero <- function(InputCollect,
 #' @param AllocatorCollect_recent TODO::Type. TODO::Description
 #' @return TODO::Type. TODO::Description
 #' @export
-Allocator_results_new <- function(InputCollect,
+get_allocator_benchmarks_zero_spend <- function(InputCollect,
                                   AllocatorCollect_opt,
                                   AllocatorCollect_hist,
                                   AllocatorCollect_recent) {
@@ -59,7 +59,7 @@ Allocator_results_new <- function(InputCollect,
   )
   temp_name <- c("optimal", "history", "recent")
   for (i in 1:3) {
-    temp_result <- compare_nonzero(InputCollect, temp_list[[i]])
+    temp_result <- compare_zero_spend(InputCollect, temp_list[[i]])
     budget_ini <- round(temp_result$init_spend, 0)
     budget_exp <- round(temp_result$exp_spend, 0)
     budget_inc <- round(100 * (budget_exp / budget_ini - 1), 2)
@@ -81,7 +81,7 @@ Allocator_results_new <- function(InputCollect,
 }
 
 ####################################################################
-#' ***Suggestion*** Allocator_results_new
+#' ***Suggestion*** get_individual_result_zero_spend
 #'
 #' TODO:: Write description
 #' @param InputCollect TODO::Type. TODO::Description
@@ -92,7 +92,7 @@ Allocator_results_new <- function(InputCollect,
 #' @param pre_period = Null
 #' @return TODO::Type. TODO::Description
 #' @export
-get_individual_result_new <- function(InputCollect,
+get_individual_result_zero_spend <- function(InputCollect,
                                       OutputCollect,
                                       media_metric,
                                       select_model,
@@ -152,7 +152,7 @@ get_individual_result_new <- function(InputCollect,
 media_metric <- "tv_S"
 
 ####################################################################
-#' ***Suggestion*** predict_individual_result_new
+#' ***Suggestion*** predict_individual_result_zero_spend
 #'
 #' TODO:: Write description
 #' form of the post_data is equal to the form of the InputCollect$dt_input
@@ -166,7 +166,7 @@ media_metric <- "tv_S"
 #' @param type = "mean"
 #' @return TODO::Type. TODO::Description
 #' @export
-predict_individual_result_new <- function(InputCollect,
+predict_individual_result_zero_spend <- function(InputCollect,
                                           OutputCollect,
                                           post_data,
                                           post_period,
@@ -230,7 +230,7 @@ predict_individual_result_new <- function(InputCollect,
 }
 
 ####################################################################
-#' ***Suggestion*** get_response_sum_on_trainining_new
+#' ***Suggestion*** get_response_sum_on_train_zero_spend
 #'
 #' TODO:: Write description
 #' @param InputCollect TODO::Type. TODO::Description
@@ -238,14 +238,14 @@ predict_individual_result_new <- function(InputCollect,
 #' @param select_model
 #' @return TODO::Type. TODO::Description
 #' @export
-get_response_sum_on_trainining_new <- function(InputCollect,
+get_response_sum_on_train_zero_spend <- function(InputCollect,
                                                OutputCollect,
                                                select_model) {
   paid_media_spends <- InputCollect$paid_media_spends
   response <- 0
   dependent <- 0
   for (i in paid_media_spends) {
-    temp <- get_individual_result_new(InputCollect, OutputCollect, i, select_model, type = "mean")
+    temp <- get_individual_result_zero_spend(InputCollect, OutputCollect, i, select_model, type = "mean")
     response <- response + temp$response
     dependent <- dependent + temp$dependent
   }
@@ -254,7 +254,7 @@ get_response_sum_on_trainining_new <- function(InputCollect,
 }
 
 ####################################################################
-#' ***Suggestion*** predict_response_sum_on_test_new
+#' ***Suggestion*** predict_response_sum_on_test_zero_spend
 #'
 #' TODO:: Write description
 #' @param InputCollect TODO::Type. TODO::Description
@@ -264,7 +264,7 @@ get_response_sum_on_trainining_new <- function(InputCollect,
 #' @param select_model
 #' @return TODO::Type. TODO::Description
 #' @export
-predict_response_sum_on_test_new <- function(InputCollect,
+predict_response_sum_on_test_zero_spend <- function(InputCollect,
                                              OutputCollect,
                                              post_data,
                                              post_period,
@@ -273,7 +273,7 @@ predict_response_sum_on_test_new <- function(InputCollect,
   response <- 0
   dependent <- 0
   for (i in paid_media_spends) {
-    temp <- predict_individual_result_new(InputCollect, OutputCollect, post_data, post_period, i, select_model, type = "mean")
+    temp <- predict_individual_result_zero_spend(InputCollect, OutputCollect, post_data, post_period, i, select_model, type = "mean")
     response <- response + temp$response
     dependent <- dependent + temp$dependent
   }
@@ -282,7 +282,7 @@ predict_response_sum_on_test_new <- function(InputCollect,
 }
 
 ####################################################################
-#' ***Suggestion*** validation_test_new
+#' ***Suggestion*** validate_predicts_zero_spend
 #'
 #' TODO:: Write description
 #' compare history and prediction
@@ -294,13 +294,13 @@ predict_response_sum_on_test_new <- function(InputCollect,
 #' @param select_model
 #' @return TODO::Type. TODO::Description
 #' @export
-validation_test_new <- function(InputCollect,
+validate_predicts_zero_spend <- function(InputCollect,
                                 OutputCollect,
                                 post_data,
                                 post_period,
                                 select_model) {
-  history <- get_response_sum_on_trainining_new(InputCollect, OutputCollect, select_model)
-  predict <- predict_response_sum_on_test_new(InputCollect, OutputCollect, post_data, post_period, select_model)
+  history <- get_response_sum_on_train_zero_spend(InputCollect, OutputCollect, select_model)
+  predict <- predict_response_sum_on_test_zero_spend(InputCollect, OutputCollect, post_data, post_period, select_model)
   decompose <- decompose_dependent_vars(InputCollect)
   predict_media_response <- decompose$non_media + decompose$media * predict$response / history$response
   predict_media_dependent <- decompose$non_media + predict$dependent

@@ -1,72 +1,55 @@
-# Project Robyn - Continuous & Semi-Automated MMM <img src='R/man/figures/logo.png' align="right" height="139px" />
-### The Open Source Marketing Mix Model Package from Meta Marketing Science
+# Project Robyn Suggestion 
+## We suggest several key innovations of validation procedures by adding Response-driven, Dependent-driven Approaches for practical online marketing !!!
 
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/Robyn)](https://cran.r-project.org/package=Robyn) [![website](https://img.shields.io/badge/site-Robyn-blue.svg)](https://facebookexperimental.github.io/Robyn/) [![facebook](https://img.shields.io/badge/group-Facebook-blue.svg)](https://www.facebook.com/groups/robynmmm/)
-[![CodeFactor](https://www.codefactor.io/repository/github/facebookexperimental/robyn/badge)](https://www.codefactor.io/repository/github/facebookexperimental/robyn)
----
+## 0. Related Links
+- **Details about our suggestions**: [Link](https://eurobae.notion.site/Meta-APAC-Robyn-Hackathon-2022-66f8fdb6819b4370864c731a9f190eaa)
+- Facebook's Robyn
+[![website](https://img.shields.io/badge/site-Robyn-blue.svg)](https://facebookexperimental.github.io/Robyn/)
 
-## Introduction
-
-  * **What is Robyn**: Robyn is an experimental, semi-automated and open-sourced Marketing Mix Modeling (MMM) package from Meta 
-  Marketing Science. It uses various machine learning techniques (Ridge regression, multi-objective evolutionary algorithm for hyperparameter optimization, time-series decomposition for trend & season, gradient-based optimization for budget allocation
-  etc.) to define media channel efficiency and effectivity, explore adstock rates and saturation curves. It's built for granular datasets 
-  with many independent variables and therefore especially suitable for digital and direct response advertisers with rich data sources. 
-  
-  * **Why are we doing this**: MMM used to be a resource-intensive technique that was only affordable for "big players". As the privacy 
-  needs of the measurement landscape evolve, there's a clear trend of increasing demand for modern MMM as a privacy-safe solution. At 
-  Meta Marketing Science, our mission is to help all businesses grow by transforming marketing practices grounded in data and science. 
-  It's highly aligned with our mission to democratising MMM and making it accessible for advertisers of all sizes. With Project Robyn, we 
-  want to contribute to the measurement landscape, inspire the industry and build a community for exchange and innovation around the future 
-  of MMM and Marketing Science in general.
-  
-## Quick start (R only)
-
-**1. Installing the package**
-  
-  * Install Robyn latest package version:
-```{r}
-## CRAN VERSION
-install.packages("Robyn")
-
-## DEV VERSION
-# If you don't have remotes installed yet, first run: install.packages("remotes")
+## 1. Pre-requisite
+- Install R
+- Install Robyn & required python/R packages
+```
 remotes::install_github("facebookexperimental/Robyn/R")
 ```
+- Install RobynSuggestion
+```
+install.packages("remotes")
+library(remotes)
+remotes::install_github("maybedy/RobynSuggestion")
+```
 
-  * If it's taking too long to download, you have a slow or unstable internet connection, and have [issues](https://github.com/facebookexperimental/Robyn/issues/309) while installing the package, try setting `options(timeout=400)`.
-  
-  * Robyn requires the Python library [Nevergrad](https://facebookresearch.github.io/nevergrad/). If encountering Python-related 
-  error during installation, please check out the [step-by-step guide](https://github.com/facebookexperimental/Robyn/blob/main/demo/demo.R) as well as this [issue](https://github.com/facebookexperimental/Robyn/issues/189) to get more info.
-  
-  * For Windows, if you get openssl error, please see instructions
-  [here](https://stackoverflow.com/questions/54558389/how-to-solve-this-error-while-installing-python-packages-in-rstudio/54566647) and
-  [here](https://dev.to/danilovieira/installing-openssl-on-windows-and-adding-to-path-3mbf) to install and update openssl.
+## 2. Overview - Codes & Functions
+0) demo.R
+1) R/inputs.R
+- __func__ put_hyper_params(...)
+2) R/media_channel.R
+- __func__ generate_budget_boundaries(...)
+- __func__ decompose_dependent_vars(...)
+- __func__ get_response_sum_on_trainining(...)
+- __func__ predict_response_sum_on_test(...)
+- __func__ get_individual_result(...)
+- __func__ predict_individual_result(...)
+3) R/allocator.R
+- __func__ get_allocator_benchmarks(...)
+4) R/validate.R
+- __func__ validate_predicts(...)
+5) R/plot.R
+- __func__ robyn_onepagers_revised(...)
+6) R/transformation.R
+- __func__ saturation_hill_revised(...)
+- __func__ adstock_weibull_revised(...)
+7) R/zero_spend.R
+- zero_spend versions of other functions
+8) R/imports.R
+- From Robyn's repository
 
-**2. Getting started**
+## 3. Check the result from demo - demo.R
+We wrote revised version of demo from original demo in Robyn. 
+You can check the actual runnings and related functions of our suggestions.
+Details are added in the file.
 
-  * Use this [demo.R](https://github.com/facebookexperimental/Robyn/tree/main/demo/demo.R) script as step-by-step guide that is
-  intended to cover most common use-cases. Test the package using simulated dataset provided in the package. 
-  
-  * Visit our [website](https://facebookexperimental.github.io/Robyn/) to explore more details about Project Robyn.
-  
-  * Join our [public group](https://www.facebook.com/groups/robynmmm/) to exchange with other users and interact with team Robyn.
-  
-## Quick start (Python): TBA
-
-Work in progress. Expect a Python wrapper soon.
-
-## License
-
-Meta's Robyn is MIT licensed, as found in the LICENSE file.
-
-- Terms of Use - https://opensource.facebook.com/legal/terms 
-- Privacy Policy - https://opensource.facebook.com/legal/privacy
-- Defensive Publication - https://www.tdcommons.org/dpubs_series/4627/
-
-## Contact
-
-* gufeng@fb.com, Gufeng Zhou, Marketing Science Partner
-* leonelsentana@fb.com, Leonel Sentana, Marketing Science Partner
-* igorskokan@fb.com, Igor Skokan, Marketing Science Partner
-* bernardolares@fb.com, Bernardo Lares, Marketing Science Partner
-* kylegoldberg@fb.com, Kyle Goldberg, Marketing Science Partner
+## 4. Contacts
+- wkddudwoek@gmail.com, Youngjae Jang, Main author
+- dykim.ses@gmail.com, Doyun Kim, Contributor & Code maintainer
+- baeuro96@gmail.com, Euro Bae, Contributor

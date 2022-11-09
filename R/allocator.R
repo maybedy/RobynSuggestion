@@ -1,17 +1,17 @@
 ####################################################################
-#' ***Suggestion*** Allocator Results
+#' ***Suggestion*** get_allocator_benchmarks
 #'
-#' TODO:: Write description
-#' Generate analytical result of allocato
+#' Provides some critical benchmarks to help analysts
+#' to evaluate the efficiency of the suggested optimal allocation.
 #'
 #' @param AllocatorCollect_opt TODO::Type. TODO::Description
 #' @param AllocatorCollect_hist TODO::Type. TODO::Description
 #' @param AllocatorCollect_recent TODO::Type. TODO::Description
 #' @return List(). Contains list of hyperparameters.
 #' @export
-Allocator_results <- function(AllocatorCollect_opt,
-                              AllocatorCollect_hist,
-                              AllocatorCollect_recent) {
+get_allocator_benchmarks <- function(AllocatorCollect_opt,
+                                     AllocatorCollect_hist,
+                                     AllocatorCollect_recent) {
     temp <- data.frame(
         scenario = character(),
         budget_init = numeric(),

@@ -1,19 +1,25 @@
 ########### !!! Important !!! ###################
-#### This is manual for our suggestion ####
-# 1) During Step 1-4, every section is similar to original version
+#### This is description of our suggestion ####
+# 1. Step 1-4: every section is similar to original version
 # except loading hyperparameter.
 # This is not a main part, but our additional suggestion
 # based on our practical usage of Robyn.
-# 2) From Step 5-10, you can check our suggestion
+# 2. Step 5-10: ***Suggestion***
+# You can check our suggestion
 # Goal (or Main purpose) for all suggestion is ...
 # each step is running our suggested function
-# 3) From Step 5'-10', you can check non-zero version
+# 3. Step 5'-10': ***Another Suggestion***
+# you can check non-zero version
 # ....
 
+################################################################
+#### Step 0: Preparation
+
+# remotes::install_github("facebookexperimental/Robyn/R")
 library(Robyn)
 
-
 # install.packages("remotes")
+# library(remotes)
 # remotes::install_github("maybedy/RobynSuggestion")
 library(RobynSuggestion)
 
@@ -217,7 +223,7 @@ budget_bd <- generate_budget_boundaries(
 ###########################################
 #### Step 6: Get analytical result of allocator
 # Suggest 1 function:
-# 1) Allocator_results
+# 1) get_allocator_benchmarks
 print("=====================================================")
 print("[Progress] Step 6: Get Analytical result of allocator")
 AllocatorCollect_opt <- robyn_allocator(
@@ -256,7 +262,7 @@ AllocatorCollect_recent <- robyn_allocator(
   export = TRUE
 )
 # (From validate.R)
-Allocator_results(AllocatorCollect_opt, AllocatorCollect_hist, AllocatorCollect_recent)
+get_allocator_benchmarks(AllocatorCollect_opt, AllocatorCollect_hist, AllocatorCollect_recent)
 
 
 #########################
@@ -342,10 +348,10 @@ predict_response_sum_on_test(
 #### Key Suggestion ########
 #### Step 10: Validate the reuslts by history and prediction
 # Suggest 1 function:
-# 1) validation_test
+# 1) validate_predicts
 print("=====================================================")
 print("[Progress] Step 10: Validate the results by history and prediction")
-validation_test(
+validate_predicts(
   InputCollect,
   OutputCollect,
   dt_simulated_weekly,
@@ -359,13 +365,13 @@ print("             Steps for non-zero")
 print("=====================================================")
 #### Step 5': Non-zero...
 print("[Progress] Step 5': ")
-compare_nonzero(
+compare_zero_spend(
   InputCollect,
   AllocatorCollect_hist,
   c(InputCollect$window_start, InputCollect$window_end)
 )
 
-Allocator_results_new(
+get_allocator_benchmarks_zero_spend(
   InputCollect,
   AllocatorCollect_opt,
   AllocatorCollect_hist,
@@ -373,7 +379,7 @@ Allocator_results_new(
 )
 
 #### Steps
-get_individual_result_new(
+get_individual_result_zero_spend(
   InputCollect,
   OutputCollect,
   "tv_S",
@@ -382,14 +388,14 @@ get_individual_result_new(
 )
 
 media_metric <- "tv_S"
-get_individual_result_new(
+get_individual_result_zero_spend(
   InputCollect,
   OutputCollect,
   "print_S",
   select_model,
   type = "mean"
 )
-predict_individual_result_new(
+predict_individual_result_zero_spend(
   InputCollect,
   OutputCollect,
   dt_simulated_weekly,
@@ -408,12 +414,12 @@ predict_individual_result(
   type = "mean"
 )
 
-get_response_sum_on_trainining_new(
+get_response_sum_on_train_zero_spend(
   InputCollect,
   OutputCollect,
   select_model
 )
-predict_response_sum_on_test_new(
+predict_response_sum_on_test_zero_spend(
   InputCollect,
   OutputCollect,
   dt_simulated_weekly,
@@ -421,7 +427,7 @@ predict_response_sum_on_test_new(
   select_model
 )
 
-validation_test_new(
+validate_predicts_zero_spend(
   InputCollect,
   OutputCollect,
   post_data, # Error
