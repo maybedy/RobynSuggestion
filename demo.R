@@ -149,7 +149,7 @@ OutputModels <- robyn_run(
   # cores = NULL, # default to max available
   # add_penalty_factor = FALSE, # Untested feature. Use with caution.
   # 2000 recommended for the dummy dataset with no calibration
-  iterations = 2000, # 2000,
+  iterations = 200, # 2000,
   # 5 recommended for the dummy dataset
   trials = 1,
   # outputs = FALSE disables direct model output - robyn_outputs()
@@ -186,7 +186,7 @@ print(OutputCollect)
 
 ## Compare all model one-pagers and select one that mostly reflects your business reality
 print(OutputCollect)
-select_model <- "1_216_5" # Pick one of the models from OutputCollect to proceed
+select_model <- OutputCollect$allSolutions[1] # Pick one of the models from OutputCollect to proceed
 
 #### Since 3.7.1: JSON export and import (faster and lighter than RDS files)
 ExportedModel <- robyn_write(InputCollect, OutputCollect, select_model)
