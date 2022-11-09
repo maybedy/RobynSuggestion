@@ -10,26 +10,12 @@
 # 3) From Step 5'-10', you can check non-zero version
 # ....
 
-
-# validation_test(InputCollect, OutputCollect, dt_simulated_weekly, post_period, select_model)
-
 library(Robyn)
 library(RobynSuggestion)
 
-print("=====================================================")
-print("[Progress] Step 5: Get Channel Boundary")
-InputCollect$paid_media_spends
-budget_low <- c(200000, 200000, 60000, 100000, 30000)
-budget_high <- c(400000, 400000, 100000, 200000, 100000)
-exp_spends <- 800000
-budget_bd <- budget_boundary(InputCollect, budget_low, budget_high, exp_spends)
-
 Sys.setenv(R_FUTURE_FORK_ENABLE = "true")
 options(future.fork.enable = TRUE)
-getwd()
 robyn_object <- "../MyRobyn.RDS"
-
-
 
 ################################################################
 #### Step 1: Load data
@@ -209,8 +195,19 @@ print(ExportedModel)
 ############################################
 #### Step 5: Get channel boundary
 # Suggest 1 function:
-# 1) budget_boundary
-
+# 1) generate_budget_boundaries
+print("=====================================================")
+print("[Progress] Step 5: Get Channel Boundary")
+InputCollect$paid_media_spends
+budget_low <- c(200000, 200000, 60000, 100000, 30000)
+budget_high <- c(400000, 400000, 100000, 200000, 100000)
+exp_spends <- 800000
+budget_bd <- generate_budget_boundaries(
+  InputCollect,
+  budget_low,
+  budget_high,
+  exp_spends
+)
 
 
 ###########################################
@@ -261,41 +258,44 @@ Allocator_results(AllocatorCollect_opt, AllocatorCollect_hist, AllocatorCollect_
 #########################
 #### Step 7: Decompose each KPI of media, non-media, and whole
 # Suggest 1 function:
-# 1) decomp_dependent
+# 1) decompose_dependent_vars
 
 print("=====================================================")
 print("[Progress] Step 7: Decompose each KPI of media, non-media, and whole")
-decomp_dependent(InputCollect)
+decompose_dependent_vars(InputCollect)
 
 ## If you want to get result from pre period,
 pre_period <- c(as.Date("2018-07-20"), as.Date("2018-08-19"))
-decomp_dependent(InputCollect, pre_period = pre_period)
+decompose_dependent_vars(InputCollect, pre_period = pre_period)
 
 
 #########################
 #### Step 8: Get Performance of Each Media
 # Suggest 3 functions:
-# 1) result_media
-# 2) saturation_hill_new
-# 3) result_media_post
+# 1) get_individual_result
+# 2) saturation_hill_revised
+# 3) predict_individual_result
 
 print("=====================================================")
 print("[Progress] Step 8: Get Performance of each media")
 post_period <- c(as.Date("2018-08-27"), as.Date("2019-08-19"))
-result_media(InputCollect, OutputCollect,
+get_individual_result(
+  InputCollect,
+  OutputCollect,
   "print_S",
   select_model,
   type = "mean"
 )
-
-result_media(InputCollect,
+get_individual_result(
+  InputCollect,
   OutputCollect,
   "print_S",
   select_model,
   type = "mean"
 )
 
-result_media_post(InputCollect,
+predict_individual_result(
+  InputCollect,
   OutputCollect,
   dt_simulated_weekly,
   c(InputCollect$window_start, InputCollect$window_end),
@@ -304,7 +304,8 @@ result_media_post(InputCollect,
   type = "mean"
 )
 
-result_media_post(InputCollect,
+predict_individual_result(
+  InputCollect,
   OutputCollect,
   dt_simulated_weekly,
   post_period,
@@ -316,15 +317,21 @@ result_media_post(InputCollect,
 #########################
 #### Step 9: Get Total Performance from whole media
 # Suggest 2 function:
-# 1) result_total
-# 2) result_total_post
+# 1) get_response_sum_on_trainining
+# 2) predict_response_sum_on_test
 
 print("=====================================================")
 print("[Progress] Step 9: Get Total Performance from whole media")
-decomp_dependent(InputCollect)
+decompose_dependent_vars(InputCollect)
 InputCollect$paid_media_spends
-result_total(InputCollect, OutputCollect, select_model)
-result_total_post(InputCollect, OutputCollect, dt_simulated_weekly, post_period, select_model)
+get_response_sum_on_trainining(InputCollect, OutputCollect, select_model)
+predict_response_sum_on_test(
+  InputCollect,
+  OutputCollect,
+  dt_simulated_weekly,
+  post_period,
+  select_model
+)
 
 
 ############################
@@ -335,7 +342,13 @@ result_total_post(InputCollect, OutputCollect, dt_simulated_weekly, post_period,
 
 print("=====================================================")
 print("[Progress] Step 10: Validate the results by history and prediction")
-validation_test(InputCollect, OutputCollect, dt_simulated_weekly, post_period, select_model)
+validation_test(
+  InputCollect,
+  OutputCollect,
+  dt_simulated_weekly,
+  post_period,
+  select_model
+)
 
 
 ######### Non-zero #########
@@ -352,31 +365,43 @@ compare_nonzero(
   c(InputCollect$window_start, InputCollect$window_end)
 )
 
-Allocator_results_new(AllocatorCollect_opt, AllocatorCollect_hist, AllocatorCollect_recent)
+Allocator_results_new(
+  AllocatorCollect_opt,
+  AllocatorCollect_hist,
+  AllocatorCollect_recent
+)
 
 #### Step 6':
 
 
-result_media_new(InputCollect, OutputCollect,
+get_individual_result_new(
+  InputCollect,
+  OutputCollect,
   "tv_S",
   select_model,
   type = "mean"
 )
 
 media_metric <- "tv_S"
-result_media_new(InputCollect, OutputCollect,
+get_individual_result_new(
+  InputCollect,
+  OutputCollect,
   "print_S",
   select_model,
   type = "mean"
 )
-result_media_post_new(InputCollect, OutputCollect,
+predict_individual_result_new(
+  InputCollect,
+  OutputCollect,
   dt_simulated_weekly,
   c(InputCollect$window_start, InputCollect$window_end),
   "print_S",
   select_model,
   type = "mean"
 )
-result_media_post(InputCollect, OutputCollect,
+predict_individual_result(
+  InputCollect,
+  OutputCollect,
   dt_simulated_weekly,
   post_period,
   "tv_S",
@@ -384,6 +409,22 @@ result_media_post(InputCollect, OutputCollect,
   type = "mean"
 )
 
-result_total_new(InputCollect, OutputCollect, select_model)
-result_total_post_new(InputCollect, OutputCollect, dt_simulated_weekly, post_period, select_model)
-validation_test_new(InputCollect, OutputCollect, post_data, post_period, select_model)
+get_response_sum_on_trainining_new(
+  InputCollect,
+  OutputCollect,
+  select_model
+)
+predict_response_sum_on_test_new(
+  InputCollect,
+  OutputCollect,
+  dt_simulated_weekly,
+  post_period,
+  select_model
+)
+validation_test_new(
+  InputCollect,
+  OutputCollect,
+  post_data,
+  post_period,
+  select_model
+)

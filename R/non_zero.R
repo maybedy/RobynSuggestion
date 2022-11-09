@@ -1,7 +1,16 @@
 
-# start
-# [Suggestion: Able to analyze without non-zero spend days]
-# focus on all days (w/ non-zero spend days)
+####################################################################
+#' [Suggestion] Compare Non-zero
+#'
+#' TODO:: Write description
+#' [Suggestion: Able to analyze without non-zero spend days]
+#' focus on all days (w/ non-zero spend days)
+#' check accuracy with dependent
+#' @param InputCollect TODO::Type. TODO::Description
+#' @param AllocatorCollect
+#' @param pre_date TODO::Type. TODO::Description
+#' @return TODO::Type. TODO::Description
+#' @export
 compare_nonzero <- function(InputCollect,
                             AllocatorCollect,
                             pre_date) {
@@ -11,6 +20,7 @@ compare_nonzero <- function(InputCollect,
   exp_spend <- dt_optimOut$expSpendUnitTotal[1]
   hist_response <- sum(dt_optimOut$initResponseUnit * dt_optimOut$histSpend / dt_optimOut$initSpendUnit) / rollingWindowLength
   exp_response <- dt_optimOut$optmResponseUnitTotal[1]
+
   return(list(
     "init_spend" = hist_spend,
     "exp_spend" = exp_spend,
@@ -19,7 +29,18 @@ compare_nonzero <- function(InputCollect,
   ))
 }
 
-Allocator_results_new <- function(AllocatorCollect_opt, AllocatorCollect_hist, AllocatorCollect_recent) {
+####################################################################
+#' [Suggestion] Allocator_results_new
+#'
+#' TODO:: Write description
+#' @param AllocatorCollect_opt TODO::Type. TODO::Description
+#' @param AllocatorCollect_hist TODO::Type. TODO::Description
+#' @param AllocatorCollect_recent TODO::Type. TODO::Description
+#' @return TODO::Type. TODO::Description
+#' @export
+Allocator_results_new <- function(AllocatorCollect_opt,
+                                  AllocatorCollect_hist,
+                                  AllocatorCollect_recent) {
   temp <- data.frame(
     scenario = character(),
     budget_init = numeric(),
@@ -53,11 +74,23 @@ Allocator_results_new <- function(AllocatorCollect_opt, AllocatorCollect_hist, A
       resp_inc
     )
   }
+
   return(temp)
 }
 
-# start
-result_media_new <- function(InputCollect,
+####################################################################
+#' [Suggestion] Allocator_results_new
+#'
+#' TODO:: Write description
+#' @param InputCollect TODO::Type. TODO::Description
+#' @param OutputCollect TODO::Type. TODO::Description
+#' @param media_metric TODO::Type. TODO::Description
+#' @param select_model TODO::Type. TODO::Description
+#' @param type = "mean"
+#' @param pre_period = Null
+#' @return TODO::Type. TODO::Description
+#' @export
+get_individual_result_new <- function(InputCollect,
                              OutputCollect,
                              media_metric,
                              select_model,
@@ -86,18 +119,18 @@ result_media_new <- function(InputCollect,
   m_adstockedRW <- m_adstocked[InputCollect$rollingWindowStartWhich:InputCollect$rollingWindowEndWhich]
   alpha <- dt_hyppar[dt_hyppar$solID == select_model, ][[paste0(media_metric, "_alphas")]]
   gamma <- dt_hyppar[dt_hyppar$solID == select_model, ][[paste0(media_metric, "_gammas")]]
-  saturation <- saturation_hill_new(m_adstockedRW,
+  saturation <- saturation_hill_revised(m_adstockedRW,
     alpha = alpha,
     gamma = gamma
   )
   mean_cost <- mean(media_range[media_range > 0])
-  saturation_response <- saturation_hill_new(m_adstockedRW,
+  saturation_response <- saturation_hill_revised(m_adstockedRW,
     alpha = alpha,
     gamma = gamma,
     index_end = NULL,
     x_marginal = mean_cost
   )
-  saturation_dependent <- saturation_hill_new(m_adstockedRW,
+  saturation_dependent <- saturation_hill_revised(m_adstockedRW,
     alpha = alpha,
     gamma = gamma
   )
@@ -107,17 +140,31 @@ result_media_new <- function(InputCollect,
   response_var <- as.numeric(saturation_response * coeff)
   response_var_modify <- response_var * length(media_range[media_range > 0]) / length(media_range)
   dependent_var <- as.numeric(saturation_dependent * coeff)
+
   return(list(
     "response" = response_var_modify,
     "dependent" = sum(dependent_var, na.rm = TRUE) / length(dependent_var)
   ))
 }
 
-
-# form of the post_data is equal to the form of the InputCollect$dt_input
-# just it has different date range
 media_metric <- "tv_S"
-result_media_post_new <- function(InputCollect,
+
+####################################################################
+#' [Suggestion] Allocator_results_new
+#'
+#' TODO:: Write description
+#' form of the post_data is equal to the form of the InputCollect$dt_input
+#' just it has different date range
+#' @param InputCollect TODO::Type. TODO::Description
+#' @param OutputCollect TODO::Type. TODO::Description
+#' @param post_data TODO::Type. TODO::Description
+#' @param post_period TODO::Type. TODO::Description
+#' @param media_metric
+#' @param select_model
+#' @param type = "mean"
+#' @return TODO::Type. TODO::Description
+#' @export
+predict_individual_result_new <- function(InputCollect,
                                   OutputCollect,
                                   post_data,
                                   post_period,
@@ -141,9 +188,9 @@ result_media_post_new <- function(InputCollect,
     shape <- dt_hyppar[dt_hyppar$solID == select_model, ][[paste0(media_metric, "_shapes")]]
     scale <- dt_hyppar[dt_hyppar$solID == select_model, ][[paste0(media_metric, "_scales")]]
     if (str_detect(tolower(adstock), "cdf")) {
-      x_list <- adstock_weibull_new(x = media_vec, shape = shape, scale = scale, type = "CDF", index_end = index_end)
+      x_list <- adstock_weibull_revised(x = media_vec, shape = shape, scale = scale, type = "CDF", index_end = index_end)
     } else if (str_detect(tolower(adstock), "pdf")) {
-      x_list <- adstock_weibull_new(x = media_vec, shape = shape, scale = scale, type = "PDF", index_end = index_end)
+      x_list <- adstock_weibull_revised(x = media_vec, shape = shape, scale = scale, type = "PDF", index_end = index_end)
     }
   }
   m_adstocked <- x_list$x_decayed
@@ -152,18 +199,18 @@ result_media_post_new <- function(InputCollect,
   alpha <- dt_hyppar[dt_hyppar$solID == select_model, ][[paste0(media_metric, "_alphas")]]
   gamma <- dt_hyppar[dt_hyppar$solID == select_model, ][[paste0(media_metric, "_gammas")]]
   index_end <- InputCollect$rollingWindowEndWhich - InputCollect$rollingWindowStartWhich + 1
-  saturation <- saturation_hill_new(m_adstockedRW,
+  saturation <- saturation_hill_revised(m_adstockedRW,
     alpha = alpha,
     gamma = gamma,
     index_end
   )
   mean_cost <- mean(media_range[media_range > 0])
-  saturation_response <- saturation_hill_new(m_adstockedRW,
+  saturation_response <- saturation_hill_revised(m_adstockedRW,
     alpha = alpha,
     gamma = gamma, ,
     x_marginal = mean_cost
   )
-  saturation_dependent <- saturation_hill_new(m_adstockedRW,
+  saturation_dependent <- saturation_hill_revised(m_adstockedRW,
     alpha = alpha,
     gamma = gamma
   )
@@ -173,32 +220,49 @@ result_media_post_new <- function(InputCollect,
   response_var <- as.numeric(saturation_response * coeff)
   response_var_modify <- response_var * length(media_range[media_range > 0]) / length(media_range[[media_metric]])
   dependent_var <- as.numeric(saturation_dependent * coeff)
+
   return(list(
     "response" = response_var_modify,
     "dependent" = sum(dependent_var, na.rm = TRUE) / length(dependent_var)
   ))
 }
 
-###########################################
-###########################################
-# start
-# total_response
-result_total_new <- function(InputCollect,
+####################################################################
+#' [Suggestion] Allocator_results_new
+#'
+#' TODO:: Write description
+#' @param InputCollect TODO::Type. TODO::Description
+#' @param OutputCollect TODO::Type. TODO::Description
+#' @param select_model
+#' @return TODO::Type. TODO::Description
+#' @export
+get_response_sum_on_trainining_new <- function(InputCollect,
                              OutputCollect,
                              select_model) {
   paid_media_spends <- InputCollect$paid_media_spends
   response <- 0
   dependent <- 0
   for (i in paid_media_spends) {
-    temp <- result_media_new(InputCollect, OutputCollect, i, select_model, type = "mean")
+    temp <- get_individual_result_new(InputCollect, OutputCollect, i, select_model, type = "mean")
     response <- response + temp$response
     dependent <- dependent + temp$dependent
   }
+
   return(list("response" = response, "dependent" = dependent))
 }
 
-
-result_total_post_new <- function(InputCollect,
+####################################################################
+#' [Suggestion] Allocator_results_new
+#'
+#' TODO:: Write description
+#' @param InputCollect TODO::Type. TODO::Description
+#' @param OutputCollect TODO::Type. TODO::Description
+#' @param post_data TODO::Type. TODO::Description
+#' @param post_period TODO::Type. TODO::Description
+#' @param select_model
+#' @return TODO::Type. TODO::Description
+#' @export
+predict_response_sum_on_test_new <- function(InputCollect,
                                   OutputCollect,
                                   post_data,
                                   post_period,
@@ -207,25 +271,35 @@ result_total_post_new <- function(InputCollect,
   response <- 0
   dependent <- 0
   for (i in paid_media_spends) {
-    temp <- result_media_post_new(InputCollect, OutputCollect, post_data, post_period, i, select_model, type = "mean")
+    temp <- predict_individual_result_new(InputCollect, OutputCollect, post_data, post_period, i, select_model, type = "mean")
     response <- response + temp$response
     dependent <- dependent + temp$dependent
   }
+
   return(list("response" = response, "dependent" = dependent))
 }
 
-# end
-###########################################
-###########################################
-
-###########################################
-###########################################
-# compare history and prediction
-# need to modify the output form
-validation_test_new <- function(InputCollect, OutputCollect, post_data, post_period, select_model) {
-  history <- result_total_new(InputCollect, OutputCollect, select_model)
-  predict <- result_total_post_new(InputCollect, OutputCollect, post_data, post_period, select_model)
-  decompose <- decomp_dependent(InputCollect)
+####################################################################
+#' [Suggestion] Allocator_results_new
+#'
+#' TODO:: Write description
+#' compare history and prediction
+#' need to modify the output form
+#' @param InputCollect TODO::Type. TODO::Description
+#' @param OutputCollect TODO::Type. TODO::Description
+#' @param post_data TODO::Type. TODO::Description
+#' @param post_period TODO::Type. TODO::Description
+#' @param select_model
+#' @return TODO::Type. TODO::Description
+#' @export
+validation_test_new <- function(InputCollect,
+                                OutputCollect,
+                                post_data,
+                                post_period,
+                                select_model) {
+  history <- get_response_sum_on_trainining_new(InputCollect, OutputCollect, select_model)
+  predict <- predict_response_sum_on_test_new(InputCollect, OutputCollect, post_data, post_period, select_model)
+  decompose <- decompose_dependent_vars(InputCollect)
   predict_media_response <- decompose$non_media + decompose$media * predict$response / history$response
   predict_media_dependent <- decompose$non_media + predict$dependent
   realized_value <- post_data %>%
@@ -241,11 +315,6 @@ validation_test_new <- function(InputCollect, OutputCollect, post_data, post_per
   )
   temp[1, ] <- c("response", round(predict_media_response, 0), round(total_dependent, 0), round(100 * (predict_media_response / total_dependent - 1), 2))
   temp[2, ] <- c("dependent", round(predict_media_dependent, 0), round(total_dependent, 0), round(100 * (predict_media_dependent / total_dependent - 1), 2))
+  
   return(temp)
 }
-validation_test_new(InputCollect, OutputCollect, post_data, post_period, select_model)
-
-# end
-###########################################
-###########################################
-

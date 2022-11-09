@@ -1,4 +1,4 @@
-
+# Utils
 check_class <- function(x, object) {
   if (any(!x %in% class(object))) stop(sprintf("Input object must be class %s", x))
 }
@@ -8,12 +8,14 @@ check_parallel <- function() "unix" %in% .Platform$OS.type
 # ggplot doesn't work with process forking on MacOS; however it works fine on Linux and Windows
 check_parallel_plot <- function() !"Darwin" %in% Sys.info()["sysname"]
 
+# Suggestions
 ####################################################################
-#' robyn_onepagers
+#' [Suggestion included] robyn_onepagers
 #'
-#' TODO:: Write description
-#' [Suggestion included in the function (63:105)]
-#' Original version is in plot.R
+#' Suggestion included in (63:105). Original version is in plot.R
+#' Suggestion: Message of Convergence on plot.
+#' Reason: Practical suggestion for checking convergence
+#' on the resulted plots, (not only logs)
 #'
 #' @param InputCollect TODO::Type. TODO::Description
 #' @param OutputCollect TODO::Type. TODO::Description
@@ -22,7 +24,11 @@ check_parallel_plot <- function() !"Darwin" %in% Sys.info()["sysname"]
 #' @param export = True TODO::Type. TODO::Description
 #' @return List(). Contains list of hyperparameters.
 #' @export
-robyn_onepagers <- function(InputCollect, OutputCollect, select_model = NULL, quiet = FALSE, export = TRUE) {
+robyn_onepagers <- function(InputCollect,
+                            OutputCollect,
+                            select_model = NULL,
+                            quiet = FALSE,
+                            export = TRUE) {
   check_class("robyn_outputs", OutputCollect)
   if (TRUE) {
     pareto_fronts <- OutputCollect$pareto_fronts
@@ -65,7 +71,6 @@ robyn_onepagers <- function(InputCollect, OutputCollect, select_model = NULL, qu
   cnt <- 0
 
   for (pf in pareto_fronts_vec) { # pf = pareto_fronts_vec[1]
-
     plotMediaShare <- filter(
       xDecompAgg, .data$robynPareto == pf,
       .data$rn %in% InputCollect$paid_media_spends
@@ -73,11 +78,10 @@ robyn_onepagers <- function(InputCollect, OutputCollect, select_model = NULL, qu
     uniqueSol <- unique(plotMediaShare$solID)
 
     # parallelResult <- for (sid in uniqueSol) { # sid = uniqueSol[1]
-    ##################################
-    ##################################
-    # [Suggestion: Message of Convergence on plot ]
-    # Reason: practical suggestion for checking convergence on the resulted plots, (not only logs)
-    # start
+
+    ######## [!!! Suggestion: Message of Convergence on plot ] ###########
+    # Reason: practical suggestion for checking convergence
+    # on the resulted plots, (not only logs)
     convergence <- list()
     OutputModels$convergence$conv_msg[1]
 
@@ -114,9 +118,8 @@ robyn_onepagers <- function(InputCollect, OutputCollect, select_model = NULL, qu
         ", DECOMP.RSSD = ", decomp_rssd_plot, " (", convergence[1], ")",
         ifelse(!is.na(mape_lift_plot), paste0(", MAPE = ", mape_lift_plot), "")
       )
-      # end
-      ########################################
-      ########################################
+      ##################### [End of Suggestion.] ##################
+
       ## 1. Spend x effect share comparison
       plotMediaShareLoopBar <- temp[[sid]]$plot1data$plotMediaShareLoopBar
       plotMediaShareLoopLine <- temp[[sid]]$plot1data$plotMediaShareLoopLine
@@ -363,5 +366,3 @@ robyn_onepagers <- function(InputCollect, OutputCollect, select_model = NULL, qu
   if (check_parallel_plot()) stopImplicitCluster()
   return(invisible(parallelResult[[1]]))
 }
-# end
-
