@@ -56,3 +56,4 @@ Details are added in the file.
 - wkddudwoek@gmail.com, Youngjae Jang, Main author & Code maintainer
 - dykim.ses@gmail.com, Doyun Kim, Contributor & Code maintainer
 - baeuro96@gmail.com, Euro Bae, Contributor
+- yeeun160291@gmail.com, Yeeun Kim, Contributor

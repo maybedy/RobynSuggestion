@@ -1,5 +1,5 @@
 Package: RobynSuggestion
-Title: JYJ, KDY, 
+Title: JYJ, KDY,
 Version: 0.0.1
 Authors@R: 
     person("Doyun", "Kim", , "dykim.ses@gmail.com", role = c("aut", "cre"),
